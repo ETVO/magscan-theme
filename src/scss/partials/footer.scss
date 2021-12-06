@@ -1,0 +1,53 @@
+footer {
+
+    .navbar {
+        .navbar-brand {
+            .custom-logo {
+                width: 180px;
+                height: auto;
+            }
+        }
+
+        .actions {
+            .goto-blog {
+
+                display: flex;
+
+                > * {
+                    margin: auto;
+                }
+
+                .text {
+                    font-size: 1.1rem;
+                }
+                
+                color: var(--bs-dark) !important;
+
+                &:hover, &:active, &:focus {
+                    color: var(--bs-primary) !important;
+                }
+            }
+
+            .social-icons {
+                margin-left: 3rem;
+                .social-icon {
+                    margin: auto;
+                    margin-left: 0;
+                    margin-right: 1rem;
+            
+                    display: inline-flex !important;
+                    height: 35px;
+                    width: 35px;
+                    padding: 0 !important;
+                    font-size: 1rem !important;
+                    border-radius: 50%;
+            
+                    span {
+                        line-height: 1;
+                        margin: auto;
+                    }
+                }
+            }
+        }
+    }
+}

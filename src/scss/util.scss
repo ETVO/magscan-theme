@@ -1,0 +1,19 @@
+.tlink {
+    text-decoration: none;
+    color: inherit !important;
+
+    &:hover, &:active, &:focus {
+        &.tlink-hover-primary {
+            color: var(--bs-primary) !important;
+        }
+
+        &.tlink-hover-decoration {
+            text-decoration: underline;
+        }
+    }
+}
+
+.very-small {
+    font-size: .75rem;
+    line-height: 1.5;
+}
