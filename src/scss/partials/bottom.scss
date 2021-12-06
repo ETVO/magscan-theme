@@ -1,0 +1,14 @@
+.bottom {
+    z-index: 2;
+    padding: 1.5rem 0 1rem;
+    .copy {
+        font-size: .9rem;
+    }
+
+    .faq {
+        font-weight: 500;
+        a {
+            // @include
+        }
+    }
+}

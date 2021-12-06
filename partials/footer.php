@@ -29,7 +29,7 @@
                                 </g>
                             </svg>
                         </span>
-                        <span class="ms-3 text">Acesse nosso blog</span>
+                        <span class="text">Acesse nosso blog</span>
                     </a>
 
                     <div class="social-icons">
@@ -47,10 +47,10 @@
             </div>
         </div>
     </div>
-    <div class="bg-light footer-content text-dark">
-        <div class="container">
+    <div class="footer-content text-dark d-flex">
+        <div class="footer-text">
             <div class="py-5">
-                <h5>Locais de atendimento</h5>
+                <h5 class="mb-3">Locais de atendimento</h5>
                 <p>
                     <b>Unidade Millennium Shopping</b>
                     <br>
@@ -65,9 +65,38 @@
                 <p class="very-small">
                     A Magscan trata com seriedade, confidencialidade e integridade todos os dados pessoais que se encontram sob a sua responsabilidade. Aqui cuidamos não apenas da sua saúde, mas também do sigilo das informações dos pacientes, colaboradores, médicos, prestadores de serviço e fornecedores.
                 </p>
-                <h6>Requisições relacionadas à Lei Geral de Dados Pessoais (LGPD)?</h6>
+                <h6 class="mb-0">Requisições relacionadas à Lei Geral de Dados Pessoais (LGPD)?</h6>
                 <a href="#" class="tlink tlink-hover-decoration"><b>Entre em contato com a Magscan.</b></a>
 
+            </div>
+        </div>
+        <div class="footer-form">
+            <div class="heading">
+                <h5>Cadastre seu e-mail para receber informativos</h5>
+            </div>
+            <div class="form">
+                <form action="">
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="name" placeholder="Nome">
+                    </div>
+                    <div class="mb-3">
+                        <input type="email" class="form-control" id="email" placeholder="Email">
+                    </div>
+                    <div class="form-check mb-3 d-flex">
+                        <div class="mb-auto">
+                            <input class="form-check-input" type="checkbox" value="" id="accept">
+                        </div>
+                        <label class="form-check-label" for="accept">
+                            Eu aceito receber conteúdos informativos sobre saúde e serviços por e-mail.
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Receber Informativos</button>
+                </form>
+                <div class="bottom-text fs-6">
+                    <b>DIRETOR TÉCNICO MÉDICO</b>
+                    <br />CRM - AM 340
+                </div>
             </div>
         </div>
     </div>

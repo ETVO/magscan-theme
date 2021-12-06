@@ -1,6 +1,8 @@
 footer {
-
+    position: relative;
     .navbar {
+        // position: absolute;
+        z-index: 2;
         .navbar-brand {
             .custom-logo {
                 width: 180px;
@@ -10,20 +12,30 @@ footer {
 
         .actions {
             .goto-blog {
-
                 display: flex;
 
                 > * {
                     margin: auto;
                 }
 
+                .icon {
+                    svg {
+                        height: 30px;
+                        width: auto;
+                    }
+                }
+
                 .text {
+                    margin-left: 1rem;
+                    font-weight: 500;
                     font-size: 1.1rem;
                 }
-                
+
                 color: var(--bs-dark) !important;
 
-                &:hover, &:active, &:focus {
+                &:hover,
+                &:active,
+                &:focus {
                     color: var(--bs-primary) !important;
                 }
             }
@@ -31,21 +43,72 @@ footer {
             .social-icons {
                 margin-left: 3rem;
                 .social-icon {
-                    margin: auto;
                     margin-left: 0;
                     margin-right: 1rem;
-            
-                    display: inline-flex !important;
-                    height: 35px;
-                    width: 35px;
-                    padding: 0 !important;
-                    font-size: 1rem !important;
                     border-radius: 50%;
-            
-                    span {
-                        line-height: 1;
-                        margin: auto;
+                }
+            }
+        }
+    }
+
+    .footer-content {
+        position: relative;
+        background-color: #dfdfdf;
+
+        .footer-text {
+            margin-left: 100px;
+            margin-right: 100px;
+        }
+
+        .footer-form {
+            z-index: 1;
+            box-shadow: -4px -6px 19px 0px rgba(0, 0, 0, 0.2);
+            margin-right: 4rem;
+            height: 100%;
+            min-width: 400px;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            overflow: hidden;
+
+            .heading {
+                background-color: var(--bs-primary);
+                padding: 2rem 4rem 1rem 2.5rem;
+                color: white;
+            }
+
+            .form {
+                padding: 2rem 4rem 1rem 2.5rem;
+                
+                .form-floating label {
+                    color: white;
+                }
+
+                .form-check label {
+                    font-size: .875rem;
+                    line-height: 1.5;
+                }
+
+                .form-control, .form-check-input {
+                    background-color: #8e8e8e;
+                    color: white;
+
+                    &::placeholder {
+                        color: white;
                     }
+
+                    &:checked {
+                        background-color: var(--bs-primary);
+                    }
+                }
+                button {
+                    font-size: .9rem;
+                    font-weight: 500;
+                    padding: .5rem 1.25rem;
+                }
+                .bottom-text {
+                    margin-top: 1rem;
+                    font-size: 1.25rem;
+                    line-height: 1.5;
                 }
             }
         }

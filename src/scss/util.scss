@@ -2,7 +2,9 @@
     text-decoration: none;
     color: inherit !important;
 
-    &:hover, &:active, &:focus {
+    &:hover,
+    &:active,
+    &:focus {
         &.tlink-hover-primary {
             color: var(--bs-primary) !important;
         }
@@ -14,6 +16,22 @@
 }
 
 .very-small {
-    font-size: .75rem;
+    font-size: 0.75rem;
     line-height: 1.5;
+}
+
+.social-icons {
+    .social-icon {
+        margin: auto;
+        display: inline-flex !important;
+        height: 33px;
+        width: 33px;
+        padding: 0 !important;
+        font-size: 1.1rem !important;
+    
+        span {
+            line-height: 1;
+            margin: auto;
+        }
+    }
 }
