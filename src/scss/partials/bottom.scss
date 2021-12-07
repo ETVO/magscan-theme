@@ -1,3 +1,45 @@
+$icon-size: 1.5rem;
+
+.floating {
+    z-index: 1000;
+    background-color: #25d342;
+    
+    position: fixed;
+    margin: 2rem 2rem;
+    margin-left: auto;
+    
+    right: 0;
+    bottom: 0;
+
+    height: $icon-size * 2;
+    width: $icon-size * 2;
+    display: flex;
+
+    box-sizing: border-box;
+    border-radius: 50%;
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.2);
+    color: white !important;
+
+    cursor: pointer;
+    transition: height .1s ease, width .1s ease;
+
+    span {
+        margin: auto;
+        font-size: $icon-size;
+        line-height: $icon-size;
+        transition: font-size .1s ease;
+    }
+
+    &:hover, &:active, &:focus {
+        height: $icon-size * 2.3;
+        width: $icon-size * 2.3;
+
+        span {
+            font-size: $icon-size * 1.15;
+        }
+    }
+}
+
 .bottom {
     z-index: 2;
     padding: 1.5rem 0 1rem;

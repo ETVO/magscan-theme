@@ -1,0 +1,42 @@
+.template-sobre {
+    .present {
+        .text {
+            font-size: 1.5rem;
+            line-height: 1.5;
+            font-weight: 600;
+            color: var(--bs-dark);
+            
+            &::after {
+                content: '';
+                margin-top: 1rem;
+                display: block;
+                height: 7px;
+                width: 100px;
+                background-color: var(--bs-primary);
+            }
+        }
+    }
+
+    .sobre {
+        border-top: solid 1px var(--bs-primary);
+        margin-top: 4rem;
+
+        .col {
+            height: 100%;
+            display: flex;
+            padding: 4rem 3rem 3rem;
+
+            &:first-child {
+                padding-top: 2.5rem;
+                padding-right: 4rem;
+            }
+
+            &.accent {
+                margin-top: -2rem !important;
+                background-color: var(--bs-primary);
+                color: white;
+                border-radius: 10px;
+            }
+        }
+    }
+}

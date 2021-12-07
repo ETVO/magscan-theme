@@ -29,9 +29,14 @@
         padding: 0 !important;
         font-size: 1.1rem !important;
     
-        span {
+        span, span::before {
             line-height: 1;
+            vertical-align: text-bottom;
             margin: auto;
         }
     }
+}
+
+.slim {
+    padding: 0.375rem 1.75rem !important;
 }
