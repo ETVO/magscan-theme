@@ -11,21 +11,20 @@ get_header();
 
 the_post();
 
-$exames1 = [
-    'Tomografia computorizadas',
-    'Ressonância Magnética',
-    'Ultrassonografia',
-    'Radiologia Digital',
-    'Eletroencefalograma'
-];
+$archive_link = get_post_type_archive_link('exame');
 
-$exames2 = [
-    'Hemograma',
-    'Colesterol',
-    'Glicemia de Jejum',
-    'Eletrólitos',
-    'Urocultura'
-];
+$categorias = array(
+    array(
+        'title'     => 'Exames por Imagem',
+        'posts'     => get_tax_posts_array('exame', 'categoria', 'exames-por-imagem'),
+        'archive'   => get_term_link('exames-por-imagem', 'categoria')
+    ),
+    array(
+        'title'     => 'Exames Laboratoriais',
+        'posts'     => get_tax_posts_array('exame', 'categoria', 'exames-laboratoriais'),
+        'archive'   => get_term_link('exames-laboratoriais', 'categoria')
+    )
+);
 
 ?>
 
@@ -47,142 +46,97 @@ $exames2 = [
             </div>
 
             <div class="exames mt-5 row">
-                <div class="exame col">
-                    <div class="heading">
-                        <span>Exames por Imagem</span>
+                <?php foreach ($categorias as $categoria): ?>
+                    <div class="exame col">
+                        <div class="heading">
+                            <span><?php echo $categoria['title']; ?></span>
+                        </div>
+    
+                        <div class="links">
+                            <?php foreach ($categoria['posts'] as $exame) : ?>
+                                <a href="<?php echo get_the_permalink($exame->ID); ?>" class="link">
+                                    <span class="icon bi-chevron-right"></span>
+                                    <span class="text"><?php echo $exame->post_title; ?></span>
+                                </a>
+                            <?php endforeach; ?>
+                        </div>
+    
+                        <div class="action d-flex">
+                            <a href="<?php echo $categoria['archive']; ?>" class="btn btn-primary m-auto">Ver todos os exames</a>
+                        </div>
+    
                     </div>
 
-                    <div class="links">
-                        <?php foreach ($exames1 as $exame) : ?>
-                            <a href="#" class="link">
-                                <span class="icon bi-chevron-right"></span>
-                                <span class="text"><?php echo $exame; ?></span>
-                            </a>
-                        <?php endforeach; ?>
-                    </div>
-
-                    <div class="action d-flex">
-                        <a href="#" class="btn btn-primary m-auto">Ver todos os exames</a>
-                    </div>
-
-                </div>
-                <div class="exame col">
-                    <div class="heading">
-                        <span>Exames Laboratoriais</span>
-                    </div>
-
-                    <div class="links">
-                        <?php foreach ($exames2 as $exame) : ?>
-                            <a href="#" class="link">
-                                <span class="icon bi-chevron-right"></span>
-                                <span class="text"><?php echo $exame; ?></span>
-                            </a>
-                        <?php endforeach; ?>
-                    </div>
-
-                    <div class="action d-flex">
-                        <a href="#" class="btn btn-primary m-auto">Ver todos os exames</a>
-                    </div>
-
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>
 
-    <div class="exame exame-a">
-        <div class="container">
-            <div class="d-flex">
-                <div class="content me-auto my-auto col-6">
-                    <div class="title">
-                        <h4>Ressonância Magnética</h4>
-                    </div>
+    <?php 
+    $args = array(
+        'post_type'         => 'exame',
+        'status'            => 'publish',
+        'orderby'           => array( 'menu_order' => 'ASC' , 'date' => 'DESC' ),
+        'posts_per_page'    => 3 
+    );
+    $query = new WP_Query($args);
+    if ($query->have_posts()) {
+        $i = -1;
+        while($query->have_posts()) {
+            $query->the_post();
+            $i++;
+            
+            ?>
+            <div class="exame exame-<?php echo ($i % 2 == 0) ? 'a' : 'b'; ?>">
+                <div class="container">
+                    <div class="d-flex">
+                        <div class="content me-auto my-auto col-6">
+                            <div class="title">
+                                <h4><?php the_title(); ?></h4>
+                            </div>
 
-                    <div class="my-3">
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                    </div>
+                            <div class="my-3">
+                                <?php the_excerpt(); ?>
+                            </div>
 
-                    <div class="action">
-                        <a href="#" class="btn btn-info slim text-white">Saber mais</a>
+                            <div class="action">
+                                <a href="<?php the_permalink(); ?>" class="btn btn-info slim text-white">Saber mais</a>
+                            </div>
+                        </div>
+                        <div class="image ms-auto order-<?php echo ($i % 2 == 0) ? 'last' : 'first'; ?>">
+                            <?php the_post_thumbnail(); ?>
+                        </div>
                     </div>
                 </div>
-                <div class="image ms-auto">
-                    <img src="<?php echo THEME_IMG_URI . 'ressonancia-magnetica.png'; ?>" alt="">
-                </div>
-            </div>
-        </div>
-        <div class="underlay">
+                <div class="underlay">
 
-        </div>
-    </div>
-    <div class="exame exame-b">
-        <div class="container">
-            <div class="d-flex">
-                <div class="image ms-auto">
-                    <img src="<?php echo THEME_IMG_URI . 'ressonancia-magnetica.png'; ?>" alt="">
-                </div>
-                <div class="content me-auto my-auto col-6">
-                    <div class="title">
-                        <h4>Ressonância Magnética</h4>
-                    </div>
-
-                    <div class="my-3">
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                    </div>
-
-                    <div class="action">
-                        <a href="#" class="btn btn-info slim text-white">Saber mais</a>
-                    </div>
                 </div>
             </div>
-        </div>
-        <div class="underlay">
+            <?php
+        }
+        wp_reset_postdata();
+    }
 
-        </div>
-    </div>
+    ?>
 
-    <div class="exame exame-a">
-        <div class="container">
-            <div class="d-flex">
-                <div class="content me-auto my-auto col-6">
-                    <div class="title">
-                        <h4>Ressonância Magnética</h4>
-                    </div>
-
-                    <div class="my-3">
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                    </div>
-
-                    <div class="action">
-                        <a href="#" class="btn btn-info slim text-white">Saber mais</a>
-                    </div>
-                </div>
-                <div class="image ms-auto">
-                    <img src="<?php echo THEME_IMG_URI . 'ressonancia-magnetica.png'; ?>" alt="">
-                </div>
-            </div>
-        </div>
-        <div class="underlay">
-
-        </div>
-    </div>
 
     <div class="unidades mt-5">
         <div class="container col-xl-8 d-flex flex-column">
             <div class="title text-uppercase m-auto">
-                <h4 class="mb-0">Unidades</h4>
+                <h3 class="mb-0">Unidades</h3>
             </div>
             <div class="row w-100 m-0">
                 <div class="col">
-                    <div id="carouselMillenium" class="carousel slide" data-bs-ride="carousel">
+                    <div id="carouselAtlantic" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselMillenium" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselMillenium" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselAtlantic" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselAtlantic" data-bs-slide-to="1" aria-label="Slide 2"></button>
                         </div>
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
+                            <div class="carousel-item">
                                 <img src="<?php echo THEME_IMG_URI . 'millenium.png'; ?>" class="d-block w-100" alt="">
                             </div>
-                            <div class="carousel-item">
+                            <div class="carousel-item active">
                                 <img src="<?php echo THEME_IMG_URI . 'atlantic.png'; ?>" class="d-block w-100" alt="">
                             </div>
                         </div>
@@ -203,11 +157,11 @@ $exames2 = [
                             <button type="button" data-bs-target="#carouselMillenium" data-bs-slide-to="1" aria-label="Slide 2"></button>
                         </div>
                         <div class="carousel-inner">
-                            <div class="carousel-item">
-                                <img src="<?php echo THEME_IMG_URI . 'atlantic.png'; ?>" class="d-block w-100" alt="">
-                            </div>
                             <div class="carousel-item active">
                                 <img src="<?php echo THEME_IMG_URI . 'millenium.png'; ?>" class="d-block w-100" alt="">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="<?php echo THEME_IMG_URI . 'atlantic.png'; ?>" class="d-block w-100" alt="">
                             </div>
                         </div>
                     </div>
@@ -215,14 +169,14 @@ $exames2 = [
                         <h5 class="mb-0 text-uppercase">Millennium Shopping</h5>
                         <div class="mt-2">
                             (92) 4009-6001
-                            <br/> Av. Djalma Batista, 1661, loja 243, Manaus-AM
+                            <br /> Av. Djalma Batista, 1661, loja 243, Manaus-AM
                         </div>
                     </div>
 
                 </div>
                 <div class="d-flex mt-4">
                     <div class="m-auto">
-                        <a href="" class="btn btn-info slim text-white">Ver Todos</a>
+                        <a href="" class="btn btn-info slim text-white fw-bold">Agendar Exames</a>
                     </div>
                 </div>
             </div>

@@ -67,9 +67,107 @@ the_post();
         </div>
     </div>
 
+    <div class="values">
+        <div class="container">
+            <div class="row m-0 w-100">
+                <div class="col value">
+                    <div class="inner">
+                        <div class="title">
+                            <h5>Uma visão do futuro</h5>
+                        </div>
+                        <div class="text">
+                            Ser reconhecida como uma empresa de excelência na área de Medicina Diagnóstica na cidade de Manaus e no Brasil, com o compromisso de aprimoramento contínuo.
+                        </div>
+                    </div>
+                </div>
+                <div class="col value">
+                    <div class="inner">
+                        <div class="title">
+                            <h5>Valores inestimáveis</h5>
+                        </div>
+                        <div class="text">
+                            Ética | Confiança | Responsabilidade | Comprometimento | Servir com amor | Buscar continuamente qualidade e excelência | Ser humano | lembrar que somos e lidamos com pessoas
+                        </div>
+                    </div>
+                </div>
+                <div class="col value">
+                    <div class="inner">
+                        <div class="title">
+                            <h5><span class="fw-normal">Acesse o nosso teste</span><br>“Quais exames você precisa fazer anualmente?”</h5>
+                        </div>
+                        <div class="text">
+                            <a href="" class="btn btn-info text-white text-uppercase fw-bold">
+                                Quero fazer o teste
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <?php foreach ($pessoas as $pessoa) : ?>
-    <?php endforeach; ?>
+    <div class="unidades mt-5">
+        <div class="container col-xl-8 d-flex flex-column">
+            <div class="title text-uppercase m-auto">
+                <h3 class="mb-0">Unidades</h3>
+            </div>
+            <div class="row w-100 m-0">
+                <div class="col">
+                    <div id="carouselAtlantic" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselAtlantic" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselAtlantic" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item">
+                                <img src="<?php echo THEME_IMG_URI . 'millenium.png'; ?>" class="d-block w-100" alt="">
+                            </div>
+                            <div class="carousel-item active">
+                                <img src="<?php echo THEME_IMG_URI . 'atlantic.png'; ?>" class="d-block w-100" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="m-auto text-center px-2 py-3">
+                        <h5 class="mb-0 text-uppercase">Atlantic Tower</h5>
+                        <div class="mt-2">
+                            (92) 4009-6001
+                            <br />1719, Térreo, sala 2A, Manaus-AM
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col">
+                    <div id="carouselMillenium" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselMillenium" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselMillenium" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="<?php echo THEME_IMG_URI . 'millenium.png'; ?>" class="d-block w-100" alt="">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="<?php echo THEME_IMG_URI . 'atlantic.png'; ?>" class="d-block w-100" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="m-auto text-center px-2 py-3">
+                        <h5 class="mb-0 text-uppercase">Millennium Shopping</h5>
+                        <div class="mt-2">
+                            (92) 4009-6001
+                            <br/> Av. Djalma Batista, 1661, loja 243, Manaus-AM
+                        </div>
+                    </div>
+
+                </div>
+                <div class="d-flex mt-4">
+                    <div class="m-auto">
+                        <a href="" class="btn btn-info slim text-white fw-bold">Agendar Exames</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <?php

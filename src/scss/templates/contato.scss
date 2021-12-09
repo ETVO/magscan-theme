@@ -1,0 +1,182 @@
+.template-contato {
+    .title-heading {
+        .text {
+            font-size: 1.1rem;
+        }
+    }
+    .contato {
+        $over: 3rem;
+        background-color: var(--bs-primary);
+        margin: calc($over + 3rem) 0;
+
+        .col {
+            margin-right: 2rem;
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+
+        .form {
+            padding: 2rem 3rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 10px 20px rgba(#000, 0.2);
+            margin-top: -$over;
+            margin-bottom: -$over;
+
+            .banner {
+                .icon {
+                    $icon-size: 2rem;
+
+                    a {
+                        background-color: #25d342;
+
+                        height: $icon-size * 1.75;
+                        width: $icon-size * 1.75;
+                        display: flex;
+
+                        box-sizing: border-box;
+                        border-radius: 50%;
+                        color: white !important;
+
+                        cursor: pointer;
+                        transition: background-color 0.2s ease;
+
+                        span {
+                            margin: auto;
+                            font-size: $icon-size;
+                            line-height: $icon-size;
+                        }
+
+                        &:hover,
+                        &:active,
+                        &:focus {
+                            background-color: #47e761;
+                        }
+                    }
+                }
+            }
+
+            .form-content {
+                .form-group {
+                    label {
+                        text-transform: uppercase;
+                        font-size: 0.875rem;
+                    }
+
+                    .icon-control {
+                        position: relative;
+                        display: flex;
+
+                        input {
+                            padding-left: 2.75rem !important;
+                        }
+
+                        .icon {
+                            position: absolute;
+                            left: 0;
+                            height: 100%;
+                            display: flex;
+
+                            .icon-inner {
+                                width: 100%;
+                                margin: auto 0;
+                                display: flex;
+
+                                border-right: solid 1px var(--bs-primary);
+                                width: 2rem;
+                                // height: 2rem;
+
+                                > * {
+                                    font-size: 1rem;
+                                    line-height: 1;
+                                    margin: auto;
+                                    color: var(--bs-primary);
+
+                                    &.bi-person {
+                                        font-size: 1.25rem;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .more {
+            padding: 2rem 3rem;
+
+            * {
+                color: white;
+            }
+
+            .text {
+                font-size: 1.1rem;
+            }
+        }
+    }
+
+    .unidades-cards {
+        padding: 3rem 0 4rem;
+
+        .title {
+            margin-bottom: 2rem;
+        }
+
+        .unidade {
+            padding: 1.5rem 1rem;
+
+            margin-bottom: 3rem;
+            background-color: white;
+            box-shadow: 0px 6px 18px rgba(#000, 0.2);
+            border-radius: 10px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            .image {
+                img {
+                    display: block;
+                    height: 250px;
+                    border-radius: 10px;
+                }
+            }
+
+            .content {
+                padding: 1.5rem 2rem;
+            }
+
+            .map {
+                display: block;
+                height: 100%;
+
+                iframe {
+                    height: 250px;
+                    width: 100%;
+                    object-fit: cover;
+
+                    border-radius: 10px;
+                }
+            }
+        }
+    }
+
+    .boxes {
+        background-color: white;
+        margin: 2rem 0 0;
+        padding: 4rem 0;
+
+        .box {
+            background-color: #e0e0e0;
+            padding: 2.5rem 3rem;
+            margin-right: 4rem;
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+}

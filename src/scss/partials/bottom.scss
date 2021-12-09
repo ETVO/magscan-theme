@@ -1,4 +1,6 @@
-$icon-size: 1.5rem;
+$icon-size: 2rem;
+$floating-size: $icon-size * 1.75;
+$multiply: 1.2;
 
 .floating {
     z-index: 1000;
@@ -11,8 +13,8 @@ $icon-size: 1.5rem;
     right: 0;
     bottom: 0;
 
-    height: $icon-size * 2;
-    width: $icon-size * 2;
+    height: $floating-size;
+    width: $floating-size;
     display: flex;
 
     box-sizing: border-box;
@@ -31,11 +33,11 @@ $icon-size: 1.5rem;
     }
 
     &:hover, &:active, &:focus {
-        height: $icon-size * 2.3;
-        width: $icon-size * 2.3;
+        height: $floating-size * $multiply;
+        width: $floating-size * $multiply;
 
         span {
-            font-size: $icon-size * 1.15;
+            font-size: $icon-size * $multiply;
         }
     }
 }

@@ -111,7 +111,7 @@ final class Magscan_Theme
 		
 		// require_once($dir . 'shortcodes/shortcodes.php');
 		
-		// require_once($dir . 'cpt/cpt.php');
+		require_once($dir . 'cpt/cpt-exame.php');
 		
 	}
 
@@ -147,6 +147,10 @@ final class Magscan_Theme
 			}
 			return $classes;
 		}, 1, 3);
+
+		add_filter('excerpt_more', function($more) {
+			return '...';
+		});
 
 		// Enable support for Post Formats.
 		add_theme_support( 'post-formats', array( 'video', 'gallery', 'audio', 'quote', 'link' ) );
