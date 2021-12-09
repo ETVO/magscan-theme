@@ -1,0 +1,27 @@
+.searchform {
+    position: relative;
+
+    .input {
+        text-align: right;
+        min-width: 300px;
+        max-width: 100%;
+    }
+
+    .submit {
+        background-color: transparent;
+        border: none;
+        transition: color .1s;
+
+        span {
+            transform: scale(-1, 1);
+            font-size: 1.25rem;
+            margin: auto .5rem;
+        }
+        
+        
+        &:hover, &:active, &:focus {
+            color: var(--bs-primary);
+        } 
+
+    }
+}

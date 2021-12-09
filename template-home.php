@@ -11,18 +11,18 @@ get_header();
 
 the_post();
 
-$archive_link = get_post_type_archive_link('exame');
+$cpt_tax = 'tipo';
 
 $categorias = array(
     array(
         'title'     => 'Exames por Imagem',
-        'posts'     => get_tax_posts_array('exame', 'categoria', 'exames-por-imagem'),
-        'archive'   => get_term_link('exames-por-imagem', 'categoria')
+        'posts'     => get_tax_posts_array('exame', $cpt_tax, 'exames-por-imagem'),
+        'archive'   => get_term_link('exames-por-imagem', $cpt_tax)
     ),
     array(
         'title'     => 'Exames Laboratoriais',
-        'posts'     => get_tax_posts_array('exame', 'categoria', 'exames-laboratoriais'),
-        'archive'   => get_term_link('exames-laboratoriais', 'categoria')
+        'posts'     => get_tax_posts_array('exame', $cpt_tax, 'exames-laboratoriais'),
+        'archive'   => get_term_link('exames-laboratoriais', $cpt_tax)
     )
 );
 
@@ -46,12 +46,12 @@ $categorias = array(
             </div>
 
             <div class="exames mt-5 row">
-                <?php foreach ($categorias as $categoria): ?>
+                <?php foreach ($categorias as $categoria) : ?>
                     <div class="exame col">
                         <div class="heading">
                             <span><?php echo $categoria['title']; ?></span>
                         </div>
-    
+
                         <div class="links">
                             <?php foreach ($categoria['posts'] as $exame) : ?>
                                 <a href="<?php echo get_the_permalink($exame->ID); ?>" class="link">
@@ -60,11 +60,10 @@ $categorias = array(
                                 </a>
                             <?php endforeach; ?>
                         </div>
-    
+
                         <div class="action d-flex">
                             <a href="<?php echo $categoria['archive']; ?>" class="btn btn-primary m-auto">Ver todos os exames</a>
                         </div>
-    
                     </div>
 
                 <?php endforeach; ?>
@@ -72,22 +71,22 @@ $categorias = array(
         </div>
     </div>
 
-    <?php 
+    <?php
     $args = array(
         'post_type'         => 'exame',
         'status'            => 'publish',
-        'orderby'           => array( 'menu_order' => 'ASC' , 'date' => 'DESC' ),
-        'posts_per_page'    => 3 
+        'orderby'           => array('menu_order' => 'ASC', 'date' => 'DESC'),
+        'posts_per_page'    => 3
     );
     $query = new WP_Query($args);
     if ($query->have_posts()) {
         $i = -1;
-        while($query->have_posts()) {
+        while ($query->have_posts()) {
             $query->the_post();
             $i++;
-            
-            ?>
-            <div class="exame exame-<?php echo ($i % 2 == 0) ? 'a' : 'b'; ?>">
+
+    ?>
+            <div class="template-exame exame-<?php echo ($i % 2 == 0) ? 'a' : 'b'; ?>">
                 <div class="container">
                     <div class="d-flex">
                         <div class="content me-auto my-auto col-6">
@@ -112,7 +111,7 @@ $categorias = array(
 
                 </div>
             </div>
-            <?php
+    <?php
         }
         wp_reset_postdata();
     }
@@ -127,20 +126,29 @@ $categorias = array(
             </div>
             <div class="row w-100 m-0">
                 <div class="col">
-                    <div id="carouselAtlantic" class="carousel slide" data-bs-ride="carousel">
+                    <div id="carouselUnidadeAtlantic" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselAtlantic" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselAtlantic" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselUnidadeAtlantic" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselUnidadeAtlantic" data-bs-slide-to="1" aria-label="Slide 2"></button>
                         </div>
                         <div class="carousel-inner">
-                            <div class="carousel-item">
-                                <img src="<?php echo THEME_IMG_URI . 'millenium.png'; ?>" class="d-block w-100" alt="">
-                            </div>
                             <div class="carousel-item active">
-                                <img src="<?php echo THEME_IMG_URI . 'atlantic.png'; ?>" class="d-block w-100" alt="">
+                                <img src="<?php echo THEME_IMG_URI . 'atlantic.png'; ?>" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="<?php echo THEME_IMG_URI . 'millenium.png'; ?>" class="d-block w-100" alt="...">
                             </div>
                         </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselUnidadeAtlantic" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselUnidadeAtlantic" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
                     </div>
+
                     <div class="m-auto text-center px-2 py-3">
                         <h5 class="mb-0 text-uppercase">Atlantic Tower</h5>
                         <div class="mt-2">
@@ -148,23 +156,32 @@ $categorias = array(
                             <br />1719, Térreo, sala 2A, Manaus-AM
                         </div>
                     </div>
-
                 </div>
                 <div class="col">
-                    <div id="carouselMillenium" class="carousel slide" data-bs-ride="carousel">
+
+                    <div id="carouselUnidadeMillenium" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselMillenium" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselMillenium" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselUnidadeMillenium" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselUnidadeMillenium" data-bs-slide-to="1" aria-label="Slide 2"></button>
                         </div>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="<?php echo THEME_IMG_URI . 'millenium.png'; ?>" class="d-block w-100" alt="">
+                                <img src="<?php echo THEME_IMG_URI . 'millenium.png'; ?>" class="d-block w-100" alt="...">
                             </div>
                             <div class="carousel-item">
-                                <img src="<?php echo THEME_IMG_URI . 'atlantic.png'; ?>" class="d-block w-100" alt="">
+                                <img src="<?php echo THEME_IMG_URI . 'atlantic.png'; ?>" class="d-block w-100" alt="...">
                             </div>
                         </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselUnidadeMillenium" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselUnidadeMillenium" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
                     </div>
+
                     <div class="m-auto text-center px-2 py-3">
                         <h5 class="mb-0 text-uppercase">Millennium Shopping</h5>
                         <div class="mt-2">

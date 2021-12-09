@@ -64,43 +64,6 @@
                         text-transform: uppercase;
                         font-size: 0.875rem;
                     }
-
-                    .icon-control {
-                        position: relative;
-                        display: flex;
-
-                        input {
-                            padding-left: 2.75rem !important;
-                        }
-
-                        .icon {
-                            position: absolute;
-                            left: 0;
-                            height: 100%;
-                            display: flex;
-
-                            .icon-inner {
-                                width: 100%;
-                                margin: auto 0;
-                                display: flex;
-
-                                border-right: solid 1px var(--bs-primary);
-                                width: 2rem;
-                                // height: 2rem;
-
-                                > * {
-                                    font-size: 1rem;
-                                    line-height: 1;
-                                    margin: auto;
-                                    color: var(--bs-primary);
-
-                                    &.bi-person {
-                                        font-size: 1.25rem;
-                                    }
-                                }
-                            }
-                        }
-                    }
                 }
             }
         }

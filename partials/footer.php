@@ -21,7 +21,7 @@
 
             <div class="collapse navbar-collapse" id="mainMenuDropdown">
                 <div class="actions ms-auto d-flex">
-                    <a href="" class="goto-blog text-uppercase text-decoration-none">
+                    <a href="<?php echo esc_url(get_permalink(get_option('page_for_posts')));; ?>" class="goto-blog text-uppercase text-decoration-none">
                         <span class="icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30.415" height="38.353" viewBox="0 0 30.415 38.353">
                                 <g id="Group_1396" data-name="Group 1396" transform="translate(30.415 38.353) rotate(180)">
@@ -47,7 +47,7 @@
             </div>
         </div>
     </div>
-    <div class="footer-content text-dark d-flex">
+    <div class="footer-content text-dark d-flex pt-lg-3">
         <div class="footer-text">
             <div class="py-5">
                 <h5 class="mb-3">Locais de atendimento</h5>
