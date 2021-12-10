@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Theme functions and definitions
  * 
@@ -6,7 +7,7 @@
  * @subpackage Magscan-Theme
  */
 
- // Exit if accessed directly.
+// Exit if accessed directly.
 if (!defined("ABSPATH")) {
 	exit;
 }
@@ -24,7 +25,7 @@ define("THEME_CLASS", "Magscan_Theme");
 final class Magscan_Theme
 {
 
-    /**
+	/**
 	 * Add hooks and load theme functions 
 	 * 
 	 * @since 1.0
@@ -33,36 +34,33 @@ final class Magscan_Theme
 	{
 		// Define theme constants
 		$this->theme_constants();
-		
+
 		// Import theme files
 		$this->theme_imports();
 
 		// Setup theme support, nav menus, etc.
-        add_action("after_setup_theme", array(THEME_CLASS, "theme_setup"));
+		add_action("after_setup_theme", array(THEME_CLASS, "theme_setup"));
 
-		if(is_admin())
-		{
+		if (is_admin()) {
 			// Enqueue admin scripts
-            add_action("admin_enqueue_scripts", array(THEME_CLASS, "theme_admin_css"));
-            add_action("admin_enqueue_scripts", array(THEME_CLASS, "theme_admin_js"));
-		}
-		else 
-		{
-			
+			add_action("admin_enqueue_scripts", array(THEME_CLASS, "theme_admin_css"));
+			add_action("admin_enqueue_scripts", array(THEME_CLASS, "theme_admin_js"));
+		} else {
+
 			// Enqueue theme scripts
 			add_action("wp_enqueue_scripts", array(THEME_CLASS, "theme_css"));
 			add_action("wp_enqueue_scripts", array(THEME_CLASS, "theme_js"), 1);
 		}
-            
+
 		// Enqueue theme fonts
 		add_action("wp_enqueue_scripts", array(THEME_CLASS, "theme_fonts"));
 		add_action("admin_enqueue_scripts", array(THEME_CLASS, "theme_fonts"));
-		
-        // Add action to make custom query before loading posts
-        add_action("pre_get_posts", array(THEME_CLASS, "set_query_params"));
-        
+
+		// Add action to make custom query before loading posts
+		add_action("pre_get_posts", array(THEME_CLASS, "set_query_params"));
+
 		// Add action to define custom excerpt length
-        add_filter("excerpt_length", array(THEME_CLASS, "custom_excerpt_len"), 999);
+		add_filter("excerpt_length", array(THEME_CLASS, "custom_excerpt_len"), 999);
 	}
 
 	/**
@@ -79,13 +77,13 @@ final class Magscan_Theme
 		// JS and CSS files URIs
 		define("THEME_JS_URI", THEME_URI . "/assets/js/");
 		define("THEME_CSS_URI", THEME_URI . "/assets/css/");
-		
+
 		// Images URI
 		define("THEME_IMG_URI", THEME_URI . "/assets/img/");
-		
+
 		// Fonts URI
 		define("THEME_FONT_URI", THEME_URI . "/assets/fonts/");
-		
+
 		// Includes URI
 		define("THEME_INC_DIR", THEME_DIR . "/inc/");
 		define("THEME_INC_URI", THEME_URI . "/inc/");
@@ -102,17 +100,17 @@ final class Magscan_Theme
 		$dir = THEME_INC_DIR;
 
 		require_once($dir . 'helpers/helpers.php');
-		
+
 		require_once($dir . 'walker/bs_menu_walker.php');
-		
+
 		require_once($dir . 'kirki/kirki-installer-section.php');
-		
+
 		// require_once($dir . 'customizer/customizer.php');
-		
+
 		// require_once($dir . 'shortcodes/shortcodes.php');
-		
+
 		require_once($dir . 'cpt/cpt-exame.php');
-		
+		require_once($dir . 'cpt/cpt-especialista.php');
 	}
 
 	/**
@@ -120,12 +118,12 @@ final class Magscan_Theme
 	 *
 	 * @since 1.0
 	 */
-	public static function theme_setup() 
+	public static function theme_setup()
 	{
 		// Register nav menus
 		register_nav_menus(
 			array(
-				"main_menu"   => esc_html__( "Menu principal" )
+				"main_menu"   => esc_html__("Menu principal")
 			)
 		);
 
@@ -141,28 +139,28 @@ final class Magscan_Theme
 			)
 		);
 
-		add_filter('nav_menu_css_class', function($classes, $item, $args) {
-			if(isset($args->li_class)) {
+		add_filter('nav_menu_css_class', function ($classes, $item, $args) {
+			if (isset($args->li_class)) {
 				$classes[] = $args->li_class;
 			}
 			return $classes;
 		}, 1, 3);
 
-		add_filter('excerpt_more', function($more) {
+		add_filter('excerpt_more', function ($more) {
 			return '...';
 		});
 
 		// Enable support for Post Formats.
-		add_theme_support( 'post-formats', array( 'video', 'gallery', 'audio', 'quote', 'link' ) );
+		add_theme_support('post-formats', array('video', 'gallery', 'audio', 'quote', 'link'));
 
-        // Let WordPress handle Title Tag in all pages
-        add_theme_support( "title-tag");
+		// Let WordPress handle Title Tag in all pages
+		add_theme_support("title-tag");
 
 		// Enable support for Post Thumbnails on posts and pages.
-		add_theme_support( 'post-thumbnails' );
-		
+		add_theme_support('post-thumbnails');
+
 		// Enable support for excerpt text on posts and pages.
-        add_post_type_support( 'page', 'excerpt' );
+		add_post_type_support('page', 'excerpt');
 
 		// Switch default core markup to output valid HTML5.
 		add_theme_support(
@@ -175,6 +173,17 @@ final class Magscan_Theme
 				'widgets',
 			)
 		);
+
+
+		// Include template archive-especialista for searches of this post type
+		add_filter('template_include', function ($template) {
+			global $wp_query;
+			$post_type = get_query_var('post_type');
+			if ($wp_query->is_search && $post_type == 'especialista') {
+				return locate_template('archive-especialista.php');
+			}
+			return $template;
+		});
 	}
 
 	/**
@@ -182,15 +191,15 @@ final class Magscan_Theme
 	 *
 	 * @since 1.0
 	 */
-	public static function theme_css() 
+	public static function theme_css()
 	{
 		$dir = THEME_CSS_URI;
-		
+
 		$version = THEME_VERSION;
 
 		wp_enqueue_style('theme-css', $dir . 'main.css', [], $version, false);
-		
-		wp_deregister_style( "bootstrap" );
+
+		wp_deregister_style("bootstrap");
 		wp_enqueue_style('bootstrap', $dir . 'bootstrap.css', [], $version, false);
 	}
 
@@ -199,10 +208,10 @@ final class Magscan_Theme
 	 *
 	 * @since 1.0
 	 */
-	public static function theme_js() 
-	{	
+	public static function theme_js()
+	{
 		$dir = THEME_JS_URI;
-		
+
 		$version = THEME_VERSION;
 
 		wp_enqueue_script('theme-js', $dir . 'main.js', ["jquery"], $version, false);
@@ -213,10 +222,10 @@ final class Magscan_Theme
 	 *
 	 * @since 1.0
 	 */
-	public static function theme_admin_css() 
+	public static function theme_admin_css()
 	{
 		$dir = THEME_CSS_URI;
-		
+
 		$version = THEME_VERSION;
 
 		// wp_enqueue_style('theme-admin-css', $dir . 'admin.css', [], $version, false); 
@@ -228,10 +237,10 @@ final class Magscan_Theme
 	 *
 	 * @since 1.0
 	 */
-	public static function theme_admin_js() 
+	public static function theme_admin_js()
 	{
 		$dir = THEME_JS_URI;
-		
+
 		$version = THEME_VERSION;
 	}
 
@@ -240,15 +249,15 @@ final class Magscan_Theme
 	 *
 	 * @since 1.0
 	 */
-	public static function theme_fonts() 
-	{	
+	public static function theme_fonts()
+	{
 		$dir = THEME_FONT_URI;
-		
+
 		$version = THEME_VERSION;
 
 		wp_enqueue_style('bootstrap-icons', $dir . 'bootstrap-icons/bootstrap-icons.css', [], "1.5.0", false);
-		
-		wp_deregister_style( "roboto" );
+
+		wp_deregister_style("roboto");
 		wp_enqueue_style('roboto', $dir . 'Roboto/font.css', [], $version, false);
 	}
 
@@ -258,40 +267,43 @@ final class Magscan_Theme
 	 * @return string Theme Version
 	 * @since 1.0
 	 */
-	public static function get_theme_version() 
+	public static function get_theme_version()
 	{
-		$theme = wp_get_theme();	
+		$theme = wp_get_theme();
 		return $theme->get("Version");
 	}
-	
-	/**
-     * Set query params for blog page by using the GET params
-     *
-     * @param [array] $query
-	 * @since 2.0
-     */
-    public static function set_query_params( $query ) {
-	
-        if( $query->is_main_query() 
-        && !$query->is_feed() ) {
-        
-            if(isset($_GET['category'])) {
-                $category = $_GET['category'];
-                $query->set( 'category_name', $category );
-            }
-        }
-    }
 
 	/**
-     * Set custom excerpt length
-     *
-     * @param int $length
+	 * Set query params for blog page by using the GET params
+	 *
+	 * @param [array] $query
 	 * @since 2.0
-     */
-	public static function custom_excerpt_len( $length ) {
-		return 20;
+	 */
+	public static function set_query_params($query)
+	{
+
+		if (
+			$query->is_main_query()
+			&& !$query->is_feed()
+		) {
+
+			if (isset($_GET['category'])) {
+				$category = $_GET['category'];
+				$query->set('category_name', $category);
+			}
+		}
 	}
 
+	/**
+	 * Set custom excerpt length
+	 *
+	 * @param int $length
+	 * @since 2.0
+	 */
+	public static function custom_excerpt_len($length)
+	{
+		return 20;
+	}
 }
 
 new Magscan_Theme();

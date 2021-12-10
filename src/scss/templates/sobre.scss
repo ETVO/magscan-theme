@@ -75,4 +75,66 @@
 
         }
     }
+
+    .corpo-clinico {
+        padding: 3rem 0 4rem;
+        background-color: white;
+
+        .especialista {
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
+            
+            .image {
+                position: relative;
+                cursor: pointer;
+                
+                a {
+                    img {
+                        width: 100%;
+                        height: 225px;
+                        object-fit: cover;
+                        box-shadow: 0px 6px 8px rgba(#000, 0.2);
+                        border-radius: 10px;
+                    }
+                    
+                    &::after {
+                        content: ""; // ::before and ::after both require content
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: var(--bs-info);
+                        border-radius: 10px;
+                        opacity: 1;
+                        mix-blend-mode: multiply;
+    
+                        transition: opacity .1s;
+                    }
+    
+                    &:hover, &:active, &:focus {
+                        &::after {
+                            opacity: 0;
+                        }
+                    }
+                }
+
+            }
+            .title {
+                margin-top: 1.5rem;
+                h3,
+                h4,
+                h5 {
+                    font-size: 1.25rem;
+                }
+            }
+            .especialidade {
+                margin-top: .5rem;
+                font-size: 0.875rem;
+            }
+        }
+    }
+    .unidades {
+        padding: 5rem 0;
+    }
 }

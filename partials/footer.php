@@ -8,7 +8,7 @@
  */
 ?>
 
-<footer class="bg-dark">
+<footer>
     <div class="bg-white navbar navbar-expand-lg text-dark">
         <div class="container pb-2 pt-3 px-0">
             <div class="navbar-brand me-auto p-0">
@@ -21,7 +21,7 @@
 
             <div class="collapse navbar-collapse" id="mainMenuDropdown">
                 <div class="actions ms-auto d-flex">
-                    <a href="<?php echo esc_url(get_permalink(get_option('page_for_posts')));; ?>" class="goto-blog text-uppercase text-decoration-none">
+                    <a href="<?php echo esc_url(get_permalink(get_option('page_for_posts'))); ?>" class="goto-blog text-uppercase text-decoration-none">
                         <span class="icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30.415" height="38.353" viewBox="0 0 30.415 38.353">
                                 <g id="Group_1396" data-name="Group 1396" transform="translate(30.415 38.353) rotate(180)">
@@ -75,7 +75,7 @@
                 <h5>Cadastre seu e-mail para receber informativos</h5>
             </div>
             <div class="form">
-                <form action="">
+                <form onsubmit="return false;">
                     <div class="mb-3">
                         <input type="text" class="form-control" id="name" placeholder="Nome">
                     </div>

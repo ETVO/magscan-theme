@@ -62,7 +62,9 @@ $exames2 = $exames[1];
                 <div class="search col-8">
                     <div class="inner">
                         <div class="outline">
-                            <?php get_search_form(); ?>
+                            <?php get_template_part('partials/searchform', null, array(
+                                'post_type' => 'exame'
+                            )); ?>
                         </div>
 
 
@@ -168,17 +170,17 @@ $exames2 = $exames[1];
                     <div class="image">
                         <img src="<?php echo THEME_IMG_URI . 'woman-working-laborator.png' ?>" alt="">
                     </div>
-                    <div class="actions pt-2">
+                    <div class="actions pt-3">
                         <div class="action-row row w-100 m-0 d-flex">
                             <span class="col col-lg-7 p-0 text m-auto ms-0">Acesse o resultado do seu exame</span>
                             <span class="col col-lg-5 p-0 action m-auto me-0 d-flex">
-                                <a href="#" class="btn btn-primary ms-auto">Ver resultados</a>
+                                <a href="https://www.medcloud.co/?page=magscan" class="btn btn-primary ms-auto">Ver resultados</a>
                             </span>
                         </div>
                         <div class="action-row row w-100 m-0 d-flex">
                             <span class="col col-lg-7 p-0 text m-auto ms-0">Agende seu exame aqui</span>
                             <span class="col col-lg-5 p-0 action m-auto me-0 d-flex">
-                                <a href="#" class="btn btn-primary ms-auto">Ver resultados</a>
+                                <a href="https://magscan.centraldemarcacao.com.br/" class="btn btn-primary ms-auto">Ver resultados</a>
                             </span>
                         </div>
                     </div>
@@ -203,12 +205,10 @@ $exames2 = $exames[1];
                         </div>
                         <div class="banner mb-4">
                             <div class="text">
-                                <p>
-                                    Você pode entrar em contato pelo nosso <i class="fw-bold">WhatsApp</i>!
-                                </p>
+                                Você pode entrar em contato pelo nosso <i class="fw-bold">WhatsApp</i>!
                             </div>
 
-                            <div class="icon mt-4">
+                            <div class="icon mt-3">
                                 <a href="#" title="Entre em contato através do WhatsApp">
                                     <span class="bi bi-whatsapp m-auto"></span>
                                 </a>

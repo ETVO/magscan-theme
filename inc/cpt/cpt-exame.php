@@ -68,7 +68,7 @@ class CPT_Exame {
                 'show_in_rest'          => true,
                 'show_admin_column'     => true,
                 'has_archive'           => true,
-                'rewrite'               => array('slug' => $post_type . 's/'. $taxonomy_slug. 's', 'with_front' => false),
+                'rewrite'               => array('slug' => 'exames/'. $taxonomy_slug. 's', 'with_front' => false),
                 'sort'                  => true
             )
         );
@@ -163,7 +163,7 @@ class CPT_Exame {
             'capability_type'       => 'post',
             'supports'              => $supports,
             'has_archive'           => true,
-            'rewrite'               => array('slug' => $slug, 'with_front' => false),
+            'rewrite'               => array('slug' => 'exames-e-preparos', 'with_front' => false),
             'taxonomies'            => array('category')
         );
 

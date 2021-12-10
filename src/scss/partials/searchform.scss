@@ -1,27 +1,40 @@
 .searchform {
     position: relative;
+    display: block;
+    width: 100%;
+
+    .inner,
+    .icon-control,
+    .form-group {
+        width: 100%;
+    }
 
     .input {
+        display: block;
         text-align: right;
-        min-width: 300px;
-        max-width: 100%;
+        min-width: 250px !important;
+        width: 100%;
+
+        &::placeholder {
+            font-size: .875rem;
+        }
     }
 
     .submit {
         background-color: transparent;
         border: none;
-        transition: color .1s;
+        transition: color 0.1s;
 
         span {
             transform: scale(-1, 1);
             font-size: 1.25rem;
-            margin: auto .5rem;
+            margin: auto 0.5rem;
         }
-        
-        
-        &:hover, &:active, &:focus {
-            color: var(--bs-primary);
-        } 
 
+        &:hover,
+        &:active,
+        &:focus {
+            color: var(--bs-primary);
+        }
     }
 }

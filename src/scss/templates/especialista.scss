@@ -1,0 +1,84 @@
+.template-single-especialista {
+    .image {
+        img {
+            border-radius: 10px;
+        }
+    }
+}
+
+.template-archive-especialista {
+    
+    .feed-wrap {
+        position: relative;
+        padding: 0 0 3rem;
+        .underlay {
+            position: absolute;
+            z-index: -1;
+            background-color: var(--bs-primary);
+            top: 8rem;
+            bottom: 0;
+            right: 0;
+            left: 0;
+        }
+
+        .especialistas {
+            .especialista {
+                > * {
+                    color: white;
+                }
+                .image {
+                    position: relative;
+                    cursor: pointer;
+
+                    a {
+                        img {
+                            width: 100%;
+                            height: 225px;
+                            object-fit: cover;
+                            box-shadow: 0px 6px 8px rgba(#000, 0.2);
+                            border-radius: 10px;
+                        }
+
+                        &::after {
+                            content: ""; // ::before and ::after both require content
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            background: var(--bs-info);
+                            border-radius: 10px;
+                            opacity: 1;
+                            mix-blend-mode: multiply;
+
+                            transition: opacity 0.1s;
+                        }
+
+                        &:hover,
+                        &:active,
+                        &:focus {
+                            &::after {
+                                opacity: 0;
+                            }
+                        }
+                    }
+                }
+                .title {
+                    margin-top: 1.5rem;
+                    h3,
+                    h4,
+                    h5 {
+                        font-size: 1.25rem;
+                    }
+                }
+                .dados {
+                    margin-top: 1rem;
+                    padding-top: 1rem;
+                    border-top: solid 2px var(--bs-info);
+                    font-size: 0.875rem;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

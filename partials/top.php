@@ -21,10 +21,10 @@
             </a>
         </div>
         <div class="actions ms-auto">
-            <a class="btn btn-primary" href="#">
+            <a class="btn btn-primary" href="https://magscan.centraldemarcacao.com.br/">
                 Agendar Consulta
             </a>
-            <a class="btn btn-primary" href="#">
+            <a class="btn btn-primary" href="https://www.medcloud.co/?page=magscan">
                 Resultados
                 <br class="d-md-none"><span class="d-none d-md-inline"></span>de exames
             </a>

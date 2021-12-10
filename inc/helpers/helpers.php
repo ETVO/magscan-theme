@@ -78,22 +78,51 @@ if (!function_exists('the_breadcrumb')) {
             echo 'Home';
             echo '</a>' . $sep;
 
-            if(is_single() && $post_type->name == 'post') {
-                echo 'Blog';
-            }
-            else if (is_tax() || is_single()) {
-                if ($post_type->name == 'exame')
-                    $taxonomy = 'tipo';
-                else
-                    $taxonomy = 'category';
+            $need_sep = false;
 
-                $term = get_the_terms(get_the_ID(), $taxonomy)[0];
-                if(isset($term)) {
-                    echo '<a href="';
-                    echo get_term_link($term, $taxonomy); 
-                    echo '" class="tlink tlink-hover-primary">';
-                    echo $term->name;
-                    echo '</a>'; 
+            if (is_single() && $post_type->name == 'post') {
+                echo 'Blog';
+            } else if (is_single() && $post_type->name == 'especialista') {
+                $page = get_page_by_path('sobre-nos');
+                echo '<a href="';
+                echo get_the_permalink($page);
+                echo '" class="tlink tlink-hover-primary">';
+                echo get_the_title($page);
+                echo '</a>';
+                echo $sep;
+                echo '<a href="';
+                echo get_post_type_archive_link('especialista');
+                echo '" class="tlink tlink-hover-primary">';
+                echo 'Corpo Clínico';
+                echo '</a>';
+                $need_sep = true;
+            } else if (is_tax() || is_category()) {
+
+                if (is_single() && !in_array($post_type->name, ['especialista'])) {
+                    if ($post_type->name == 'exame')
+                        $taxonomy = 'tipo';
+                    else
+                        $taxonomy = 'category';
+
+                    $term = get_the_terms(get_the_ID(), $taxonomy)[0];
+                    if (isset($term)) {
+                        echo '<a href="';
+                        echo get_term_link($term, $taxonomy);
+                        echo '" class="tlink tlink-hover-primary">';
+                        echo $term->name;
+                        echo '</a>';
+                    }
+                } else {
+                    if ($post_type->name == 'especialista') {
+                        $page = get_page_by_path('sobre-nos');
+                        echo '<a href="';
+                        echo get_the_permalink($page);
+                        echo '" class="tlink tlink-hover-primary">';
+                        echo get_the_title($page);
+                        echo '</a>';
+                        echo $sep;
+                    }
+                    echo single_term_title('', false);
                 }
             } else if (is_archive() || is_single()) {
                 if (is_day()) {
@@ -103,7 +132,21 @@ if (!function_exists('the_breadcrumb')) {
                 } else if (is_year()) {
                     echo get_the_date('Y');
                 } else {
+                    if ($post_type->name == 'especialista') {
+                        $page = get_page_by_path('sobre-nos');
+                        echo '<a href="';
+                        echo get_the_permalink($page);
+                        echo '" class="tlink tlink-hover-primary">';
+                        echo get_the_title($page);
+                        echo '</a>';
+                        echo $sep;
+                    }
+                    echo '<a href="';
+                    echo get_post_type_archive_link($post_type->name);
+                    echo '" class="tlink tlink-hover-primary">';
                     echo $post_type->labels->name;
+                    echo '</a>';
+                    $need_sep = true;
                 }
             }
 
@@ -118,11 +161,12 @@ if (!function_exists('the_breadcrumb')) {
                 the_title();
             }
 
-            if(is_404()) {
+            if (is_404()) {
                 echo '404';
             }
 
-            if(is_search()) {
+            if (is_search()) {
+                if ($need_sep) echo $sep;
                 echo 'Pesquisa';
             }
 
@@ -142,3 +186,11 @@ if (!function_exists('the_breadcrumb')) {
         }
     }
 }
+
+function leading_zero_wp_link_pages_link($i)
+{
+    $i = zeroise($i, 2);
+    return $i;
+}
+
+add_filter('wp_link_pages_link',  'leading_zero_link_pages_link');

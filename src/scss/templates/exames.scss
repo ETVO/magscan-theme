@@ -59,7 +59,7 @@
 
                     border-radius: 10px;
                 }
-                
+
                 > .inner {
                     width: 100%;
                     .image img {
@@ -67,10 +67,10 @@
                         box-shadow: 0px 10px 20px rgba(#000, 0.2);
                         border-radius: 10px;
                     }
-    
+
                     .content {
                         margin-top: 2rem;
-    
+
                         * {
                             color: white;
                         }
@@ -79,11 +79,10 @@
                         }
                     }
                 }
-
             }
         }
     }
-    
+
     .laboratorio {
         padding: 3rem 0;
 
@@ -111,13 +110,11 @@
             .image img {
                 border-radius: 10px;
                 width: 100%;
-
             }
 
             .actions {
-
                 .action-row {
-                    padding: .6rem 0;
+                    padding: 0.6rem 0;
 
                     .text {
                         font-size: 1.25rem;
@@ -125,7 +122,6 @@
                         line-height: 1;
                     }
                     .action {
-
                     }
                 }
             }
@@ -170,7 +166,6 @@
             .text {
                 font-size: 1.1rem;
             }
-            
 
             .banner {
                 .icon {
@@ -205,5 +200,67 @@
                 }
             }
         }
+    }
+}
+
+.single-exame {
+    padding: 0 0 4rem;
+
+    .container > .row > .col {
+        padding-left: 4rem;
+
+        &:first-child {
+            padding-left: 0;
+        }
+    }
+    .date {
+        .icon {
+            -webkit-text-stroke: 1px var(--bs-primary);
+            line-height: 1;
+        }
+        .text {
+            line-height: 1;
+        }
+    }
+
+    .image-view {
+        margin: 2rem 0;
+        padding: 2.5rem 0;
+        position: relative;
+
+        .content {
+            .title {
+                text-transform: uppercase;
+                color: var(--bs-dark);
+            }
+        }
+
+        .image {
+            img {
+                border-radius: 10px;
+                height: 100%;
+                display: block;
+                box-shadow: 0 10px 20px 0px rgba(0, 0, 0, 0.2);
+            }
+        }
+
+        .underlay {
+            border-radius: 10px;
+
+            z-index: -1;
+            position: absolute;
+            right: -8rem;
+            left: 25%;
+            top: 0;
+
+            height: 100%;
+            // width: 40%;
+            background-color: var(--bs-primary);
+        }
+    }
+
+    .exame {
+        width: 75%;
+        margin-right: 0 !important;
     }
 }

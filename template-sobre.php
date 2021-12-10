@@ -106,27 +106,97 @@ the_post();
         </div>
     </div>
 
-    <div class="unidades mt-5">
+    <div class="corpo-clinico">
+        <div class="container col-xl-8">
+            <div class="title text-center text-uppercase">
+                <h3 class="fs-4">Corpo Clínico</h3>
+            </div>
+            <div class="row w-100 m-0 g-5 mt-4">
+                <?php
+                $args = array(
+                    'post_type'         => 'especialista',
+                    'status'            => 'publish',
+                    'orderby'           => array('menu_order' => 'ASC', 'date' => 'DESC'),
+                    'posts_per_page'    => 3
+                );
+
+                query_posts($args);
+                if (have_posts()) {
+                    while (have_posts()) :
+                        the_post();
+                        $post = get_post();
+
+                        $permalink = esc_url(get_the_permalink());
+
+                        $title = get_the_title();
+                        $especialidade = get_field('especialidade');
+
+                ?>
+
+                        <div class="col especialista text-center">
+                            <div class="image">
+                                <a href="<?php echo $permalink; ?>">
+                                    <?php the_post_thumbnail(); ?>
+                                </a>
+                            </div>
+                            <div class="title text-center text-uppercase">
+                                <h4 class="fw-bold">
+                                    <a class="tlink tlink-hover-decoration" href="<?php echo $permalink; ?>">
+                                        <?php echo $title; ?>
+                                    </a>
+                                </h4>
+                            </div>
+                            <div class="especialidade">
+                                <?php echo $especialidade; ?>
+                            </div>
+                        </div>
+
+                <?php
+                    endwhile;
+                }
+                ?>
+                <div class="action text-uppercase d-flex mt-4">
+                    <a 
+                        href="<?php echo get_post_type_archive_link( 'especialista' ); ?>" 
+                        class="mx-auto btn btn-info slim text-white"
+                    >
+                        <small>Ver Todos</small>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="unidades">
         <div class="container col-xl-8 d-flex flex-column">
             <div class="title text-uppercase m-auto">
                 <h3 class="mb-0">Unidades</h3>
             </div>
             <div class="row w-100 m-0">
                 <div class="col">
-                    <div id="carouselAtlantic" class="carousel slide" data-bs-ride="carousel">
+                    <div id="carouselUnidadeAtlantic" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselAtlantic" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselAtlantic" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselUnidadeAtlantic" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselUnidadeAtlantic" data-bs-slide-to="1" aria-label="Slide 2"></button>
                         </div>
                         <div class="carousel-inner">
-                            <div class="carousel-item">
-                                <img src="<?php echo THEME_IMG_URI . 'millenium.png'; ?>" class="d-block w-100" alt="">
-                            </div>
                             <div class="carousel-item active">
-                                <img src="<?php echo THEME_IMG_URI . 'atlantic.png'; ?>" class="d-block w-100" alt="">
+                                <img src="<?php echo THEME_IMG_URI . 'atlantic.png'; ?>" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="<?php echo THEME_IMG_URI . 'millenium.png'; ?>" class="d-block w-100" alt="...">
                             </div>
                         </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselUnidadeAtlantic" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselUnidadeAtlantic" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
                     </div>
+
                     <div class="m-auto text-center px-2 py-3">
                         <h5 class="mb-0 text-uppercase">Atlantic Tower</h5>
                         <div class="mt-2">
@@ -134,35 +204,44 @@ the_post();
                             <br />1719, Térreo, sala 2A, Manaus-AM
                         </div>
                     </div>
-
                 </div>
                 <div class="col">
-                    <div id="carouselMillenium" class="carousel slide" data-bs-ride="carousel">
+
+                    <div id="carouselUnidadeMillenium" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselMillenium" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselMillenium" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselUnidadeMillenium" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselUnidadeMillenium" data-bs-slide-to="1" aria-label="Slide 2"></button>
                         </div>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="<?php echo THEME_IMG_URI . 'millenium.png'; ?>" class="d-block w-100" alt="">
+                                <img src="<?php echo THEME_IMG_URI . 'millenium.png'; ?>" class="d-block w-100" alt="...">
                             </div>
                             <div class="carousel-item">
-                                <img src="<?php echo THEME_IMG_URI . 'atlantic.png'; ?>" class="d-block w-100" alt="">
+                                <img src="<?php echo THEME_IMG_URI . 'atlantic.png'; ?>" class="d-block w-100" alt="...">
                             </div>
                         </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselUnidadeMillenium" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselUnidadeMillenium" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
                     </div>
+
                     <div class="m-auto text-center px-2 py-3">
                         <h5 class="mb-0 text-uppercase">Millennium Shopping</h5>
                         <div class="mt-2">
                             (92) 4009-6001
-                            <br/> Av. Djalma Batista, 1661, loja 243, Manaus-AM
+                            <br /> Av. Djalma Batista, 1661, loja 243, Manaus-AM
                         </div>
                     </div>
 
                 </div>
                 <div class="d-flex mt-4">
                     <div class="m-auto">
-                        <a href="" class="btn btn-info slim text-white fw-bold">Agendar Exames</a>
+                        <a href="#" class="btn btn-info slim text-white fw-bold">Agendar Exames</a>
                     </div>
                 </div>
             </div>
