@@ -8,8 +8,8 @@
 ?>
 
 <div class="top d-flex">
-    <div class="container d-flex">
-        <div class="social-icons me-auto">
+    <div class="container d-flex flex-column flex-md-row">
+        <div class="social-icons mx-auto ms-md-0 me-md-auto mb-md-0">
             <a class="social-icon btn btn-outline-primary" href="https://facebook.com">
                 <span class="bi-facebook"></span>
             </a>
@@ -20,7 +20,7 @@
                 <span class="bi-linkedin"></span>
             </a>
         </div>
-        <div class="actions ms-auto">
+        <div class="actions d-none d-md-block ms-auto">
             <a class="btn btn-primary" href="https://magscan.centraldemarcacao.com.br/">
                 Agendar Consulta
             </a>

@@ -91,10 +91,6 @@
     border-radius: 10px;
     box-shadow: 0 8px 15px 0px rgba(0, 0, 0, 0.2);
 
-    &:first-child {
-        margin-right: calc(5rem - 0.9vw);
-    }
-
     .heading {
         padding: 1rem;
         display: flex;
@@ -178,6 +174,8 @@
         img {
             border-radius: 10px;
             height: 100%;
+            max-width: 100%;
+            object-fit: cover;
             display: block;
             box-shadow: 0 10px 20px 0px rgba(0, 0, 0, 0.2);
         }
@@ -217,6 +215,14 @@
             .title {
                 color: inherit;
             }
+        }
+    }
+}
+
+@media all and (max-width: 768px) {
+    .template-exame.exame-a {
+        .underlay {
+            display: none;
         }
     }
 }

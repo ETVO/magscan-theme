@@ -33,7 +33,7 @@ $categorias = array(
         <img class="bg-img" src="<?php echo THEME_IMG_URI . 'bg-home-cta.png'; ?>" alt="">
         <div class="container col-xl-8">
             <div class="d-flex cta">
-                <div class="col-6 me-auto">
+                <div class="px-2 px-sm-4 px-md-0 col col-md-8 col-lg-6 me-auto">
                     <h2 class="title text-uppercase">Melhores profissionais de saúde</h2>
 
                     <div class="my-3">
@@ -45,24 +45,26 @@ $categorias = array(
                 </div>
             </div>
 
-            <div class="exames mt-5 row">
+            <div class="exames mt-3 mt-md-5 row g-5">
                 <?php foreach ($categorias as $categoria) : ?>
-                    <div class="exame col">
-                        <div class="heading">
-                            <span><?php echo $categoria['title']; ?></span>
-                        </div>
+                    <div class="col-12 col-md-6">
+                        <div class="exame">
+                            <div class="heading">
+                                <span><?php echo $categoria['title']; ?></span>
+                            </div>
 
-                        <div class="links">
-                            <?php foreach ($categoria['posts'] as $exame) : ?>
-                                <a href="<?php echo get_the_permalink($exame->ID); ?>" class="link">
-                                    <span class="icon bi-chevron-right"></span>
-                                    <span class="text"><?php echo $exame->post_title; ?></span>
-                                </a>
-                            <?php endforeach; ?>
-                        </div>
+                            <div class="links">
+                                <?php foreach ($categoria['posts'] as $exame) : ?>
+                                    <a href="<?php echo get_the_permalink($exame->ID); ?>" class="link">
+                                        <span class="icon bi-chevron-right"></span>
+                                        <span class="text"><?php echo $exame->post_title; ?></span>
+                                    </a>
+                                <?php endforeach; ?>
+                            </div>
 
-                        <div class="action d-flex">
-                            <a href="<?php echo $categoria['archive']; ?>" class="btn btn-primary m-auto">Ver todos os exames</a>
+                            <div class="action d-flex">
+                                <a href="<?php echo $categoria['archive']; ?>" class="btn btn-primary m-auto">Ver todos os exames</a>
+                            </div>
                         </div>
                     </div>
 
@@ -88,21 +90,23 @@ $categorias = array(
     ?>
             <div class="template-exame exame-<?php echo ($i % 2 == 0) ? 'a' : 'b'; ?>">
                 <div class="container">
-                    <div class="d-flex">
-                        <div class="content me-auto my-auto col-6">
-                            <div class="title">
-                                <h4><?php the_title(); ?></h4>
-                            </div>
+                    <div class="row g-4">
+                        <div class="content col-12 col-md-6 d-flex">
+                            <div class="my-auto">
+                                <div class="title">
+                                    <h4><?php the_title(); ?></h4>
+                                </div>
 
-                            <div class="my-3">
-                                <?php the_excerpt(); ?>
-                            </div>
+                                <div class="my-3">
+                                    <?php the_excerpt(); ?>
+                                </div>
 
-                            <div class="action">
-                                <a href="<?php the_permalink(); ?>" class="btn btn-info slim text-white">Saber mais</a>
+                                <div class="action">
+                                    <a href="<?php the_permalink(); ?>" class="btn btn-info slim text-white">Saber mais</a>
+                                </div>
                             </div>
                         </div>
-                        <div class="image ms-auto order-<?php echo ($i % 2 == 0) ? 'last' : 'first'; ?>">
+                        <div class="image col-12 col-md-6 order-first order-md-<?php echo ($i % 2 == 0) ? 'last' : 'first'; ?>">
                             <?php the_post_thumbnail(); ?>
                         </div>
                     </div>
@@ -124,8 +128,8 @@ $categorias = array(
             <div class="title text-uppercase m-auto">
                 <h3 class="mb-0">Unidades</h3>
             </div>
-            <div class="row w-100 m-0">
-                <div class="col">
+            <div class="row w-100 m-0 g-5 justify-content-center">
+                <div class="col-12 col-md-6 col-lg-5">
                     <div id="carouselUnidadeAtlantic" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-indicators">
                             <button type="button" data-bs-target="#carouselUnidadeAtlantic" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -157,7 +161,8 @@ $categorias = array(
                         </div>
                     </div>
                 </div>
-                <div class="col">
+                <div class="d-none d-lg-block col-1"></div>
+                <div class="col-12 col-md-6 col-lg-5">
 
                     <div id="carouselUnidadeMillenium" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-indicators">

@@ -35,7 +35,7 @@ $exames2 = $exames[1];
     <div class="preparos">
         <div class="container">
             <div class="row">
-                <div class="list col col-4">
+                <div class="list col-12 col-lg-4">
                     <div class="explain">
                         <div class="title text-uppercase">
                             <h1 class="fs-5 fw-bold">Exames e Preparos</h1>
@@ -59,7 +59,7 @@ $exames2 = $exames[1];
                         </div>
                     </div>
                 </div>
-                <div class="search col-8">
+                <div class="search col-12 col-lg-8">
                     <div class="inner">
                         <div class="outline">
                             <?php get_template_part('partials/searchform', null, array(
@@ -119,21 +119,23 @@ $exames2 = $exames[1];
     ?>
         <div class="template-exame exame-<?php echo ($i % 2 != 0) ? 'a' : 'b'; ?>">
             <div class="container">
-                <div class="d-flex">
-                    <div class="content me-auto my-auto col-6">
-                        <div class="title">
-                            <h4><?php the_title(); ?></h4>
-                        </div>
+                <div class="row g-4">
+                    <div class="content col-12 col-md-6 d-flex">
+                        <div class="my-auto">
+                            <div class="title">
+                                <h4><?php the_title(); ?></h4>
+                            </div>
 
-                        <div class="my-3">
-                            <?php the_excerpt(); ?>
-                        </div>
+                            <div class="my-3">
+                                <?php the_excerpt(); ?>
+                            </div>
 
-                        <div class="action">
-                            <a href="<?php the_permalink(); ?>" class="btn btn-info slim text-white">Saber mais</a>
+                            <div class="action">
+                                <a href="<?php the_permalink(); ?>" class="btn btn-info slim text-white">Saber mais</a>
+                            </div>
                         </div>
                     </div>
-                    <div class="image ms-auto order-<?php echo ($i % 2 != 0) ? 'last' : 'first'; ?>">
+                    <div class="image col-12 col-md-6 order-first order-md-<?php echo ($i % 2 != 0) ? 'last' : 'first'; ?>">
                         <?php the_post_thumbnail(); ?>
                     </div>
                 </div>

@@ -16,18 +16,20 @@ the_post();
 <div class="template-sobre">
 
     <div class="present">
-        <div class="container d-flex">
-            <div class="me-auto my-auto col-xl-4">
-                <div class="title text-uppercase text-primary">
-                    <h3 class="fw-bold">A Magscan</h3>
-                </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-4">
+                    <div class="title text-uppercase text-primary">
+                        <h3 class="fw-bold">A Magscan</h3>
+                    </div>
 
-                <div class="text mt-3">
-                    "Acreditamos no poder da Medicina para oferecer mais saúde para você/sua família/os manauaras"
+                    <div class="text mt-3">
+                        "Acreditamos no poder da Medicina para oferecer mais saúde para você/sua família/os manauaras"
+                    </div>
                 </div>
-            </div>
-            <div class="ms-auto">
-                <img src="<?php echo THEME_IMG_URI . 'present.svg'; ?>" alt="">
+                <div class="image col-12 col-lg-8">
+                    <img src="<?php echo THEME_IMG_URI . 'present.svg'; ?>" alt="">
+                </div>
             </div>
         </div>
     </div>
@@ -35,7 +37,7 @@ the_post();
     <div class="sobre">
         <div class="container">
             <div class="row w-100 m-0">
-                <div class="normal col text-dark">
+                <div class="normal col col-12 col-lg-6 text-dark">
                     <div class="text">
                         <p>Imagine que bom poder confiar em uma clínica em Manaus que tem como compromisso acreditar no poder da Medicina, especialmente no campo da Medicina Diagnóstica</p>
 
@@ -51,7 +53,7 @@ the_post();
                     </div>
                 </div>
 
-                <div class="accent col">
+                <div class="accent col col-12 col-lg-6">
                     <div class="text">
                         <h4>Unidade</h4>
 
@@ -69,36 +71,42 @@ the_post();
 
     <div class="values">
         <div class="container">
-            <div class="row m-0 w-100">
-                <div class="col value">
-                    <div class="inner">
-                        <div class="title">
-                            <h5>Uma visão do futuro</h5>
-                        </div>
-                        <div class="text">
-                            Ser reconhecida como uma empresa de excelência na área de Medicina Diagnóstica na cidade de Manaus e no Brasil, com o compromisso de aprimoramento contínuo.
-                        </div>
-                    </div>
-                </div>
-                <div class="col value">
-                    <div class="inner">
-                        <div class="title">
-                            <h5>Valores inestimáveis</h5>
-                        </div>
-                        <div class="text">
-                            Ética | Confiança | Responsabilidade | Comprometimento | Servir com amor | Buscar continuamente qualidade e excelência | Ser humano | lembrar que somos e lidamos com pessoas
+            <div class="row m-0 w-100 g-4 justify-content-center">
+                <div class="col">
+                    <div class="value">
+                        <div class="inner">
+                            <div class="title">
+                                <h5>Uma visão do futuro</h5>
+                            </div>
+                            <div class="text">
+                                Ser reconhecida como uma empresa de excelência na área de Medicina Diagnóstica na cidade de Manaus e no Brasil, com o compromisso de aprimoramento contínuo.
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col value">
-                    <div class="inner">
-                        <div class="title">
-                            <h5><span class="fw-normal">Acesse o nosso teste</span><br>“Quais exames você precisa fazer anualmente?”</h5>
+                <div class="col">
+                    <div class="value">
+                        <div class="inner">
+                            <div class="title">
+                                <h5>Valores inestimáveis</h5>
+                            </div>
+                            <div class="text">
+                                Ética | Confiança | Responsabilidade | Comprometimento | Servir com amor | Buscar continuamente qualidade e excelência | Ser humano | lembrar que somos e lidamos com pessoas
+                            </div>
                         </div>
-                        <div class="text">
-                            <a href="" class="btn btn-info text-white text-uppercase fw-bold">
-                                Quero fazer o teste
-                            </a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="value">
+                        <div class="inner">
+                            <div class="title">
+                                <h5><span class="fw-normal">Acesse o nosso teste</span><br>“Quais exames você precisa fazer anualmente?”</h5>
+                            </div>
+                            <div class="text">
+                                <a href="" class="btn btn-info text-white text-uppercase fw-bold">
+                                    Quero fazer o teste
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -133,7 +141,7 @@ the_post();
 
                 ?>
 
-                        <div class="col especialista text-center">
+                        <div class="col-12 col-md-4 especialista text-center">
                             <div class="image">
                                 <a href="<?php echo $permalink; ?>">
                                     <?php the_post_thumbnail(); ?>
@@ -156,10 +164,7 @@ the_post();
                 }
                 ?>
                 <div class="action text-uppercase d-flex mt-4">
-                    <a 
-                        href="<?php echo get_post_type_archive_link( 'especialista' ); ?>" 
-                        class="mx-auto btn btn-info slim text-white"
-                    >
+                    <a href="<?php echo get_post_type_archive_link('especialista'); ?>" class="mx-auto btn btn-info slim text-white">
                         <small>Ver Todos</small>
                     </a>
                 </div>
@@ -172,8 +177,8 @@ the_post();
             <div class="title text-uppercase m-auto">
                 <h3 class="mb-0">Unidades</h3>
             </div>
-            <div class="row w-100 m-0">
-                <div class="col">
+            <div class="row w-100 m-0 g-5 justify-content-center">
+                <div class="col-12 col-md-6 col-lg-5">
                     <div id="carouselUnidadeAtlantic" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-indicators">
                             <button type="button" data-bs-target="#carouselUnidadeAtlantic" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -205,7 +210,8 @@ the_post();
                         </div>
                     </div>
                 </div>
-                <div class="col">
+                <div class="d-none d-lg-block col-1"></div>
+                <div class="col-12 col-md-6 col-lg-5">
 
                     <div id="carouselUnidadeMillenium" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-indicators">
@@ -241,7 +247,7 @@ the_post();
                 </div>
                 <div class="d-flex mt-4">
                     <div class="m-auto">
-                        <a href="#" class="btn btn-info slim text-white fw-bold">Agendar Exames</a>
+                        <a href="" class="btn btn-info slim text-white fw-bold">Agendar Exames</a>
                     </div>
                 </div>
             </div>

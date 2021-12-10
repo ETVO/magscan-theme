@@ -203,6 +203,17 @@
     }
 }
 
+@media all and (max-width: 768px) {
+    .template-exames {
+        .preparos {
+            .search .show-exame {
+                padding: 2rem;
+            }
+
+        }
+    }
+}
+
 .single-exame {
     padding: 0 0 4rem;
 

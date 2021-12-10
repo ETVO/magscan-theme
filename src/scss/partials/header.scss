@@ -1,5 +1,18 @@
 header {
     z-index: 1000;
+    .navbar-brand {
+        img {
+            width: 220px;
+            height: auto;
+        }
+    }
+
+    .navbar-toggler {
+        .icon {
+            font-size: 1.5rem;
+        }
+    }
+
     .menu-item {
         text-transform: uppercase;
         margin-left: 1.5rem;
@@ -66,5 +79,26 @@ header {
             }
         }
     }
+}
 
+@media all and (max-width: 768px) {
+    header {
+        .navbar-brand {
+            img {
+                width: 200px;
+            }
+        }
+    } 
+}
+
+
+
+@media all and (max-width: 576px) {
+    header {
+        .navbar-brand {
+            img {
+                width: 180px;
+            }
+        }
+    } 
 }
