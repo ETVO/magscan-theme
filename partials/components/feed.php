@@ -7,14 +7,7 @@
  * @subpackage Magscan-Theme
  */
 
-
-$meta = array(
-    "date" => array(
-        "name" => __("Data"),
-        "value" => "",
-        "show" => true,
-    )
-);
+$post_type = (isset($_GET['post_type'])) ? $_GET['post_type'] : 'post';
 
 // Get theme mod for meta separator 
 $separator = "&bull;";
@@ -25,7 +18,7 @@ $no_posts_found = "Nenhum post foi encontrado...";
 
 <div class="feed">
     <div class="container">
-        <div class="row m-0 w-100 g-4 row-cols-4">
+        <div class="row m-0 w-100 g-4 row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
             <?php
             if (have_posts()) {
                 while (have_posts()) :
@@ -34,9 +27,10 @@ $no_posts_found = "Nenhum post foi encontrado...";
 
                     $permalink = esc_url(get_the_permalink());
 
-                    $date = get_the_date('d.M');
+                    $date = get_the_date('d M Y');
 
                     $title = get_the_title();
+
 
             ?>
 

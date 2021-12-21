@@ -33,58 +33,18 @@ the_post();
                 <div class="form col-5">
                     <div class="banner d-flex mb-4">
                         <div class="icon my-auto me-4">
-                            <a href="#" title="Entre em contato através do WhatsApp">
+                            <a href="https://api.whatsapp.com/send?phone=559299039910&text=Ol%C3%A1%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es" title="Entre em contato através do WhatsApp">
                                 <span class="bi bi-whatsapp m-auto"></span>
                             </a>
                         </div>
                         <div class="text my-auto">
-                            <div class="fs-5">Você pode entrar em contato pelo nosso <i class="fw-bold">WhatsApp</i>!</div>
+                            <div class="fs-5">Você pode entrar em contato pelo nosso
+                                <a class="tlink tlink-hover-decoration" href="https://api.whatsapp.com/send?phone=559299039910&text=Ol%C3%A1%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es" title="Entre em contato através do WhatsApp"><i class="fw-bold">WhatsApp</i></a>!
+                            </div>
                         </div>
                     </div>
                     <div class="form-content px-4">
-                        <div class="form-group mb-3">
-                            <label for="nome" class="form-label">Nome</label>
-                            <div class="icon-control">
-                                <input type="text" class="form-control" name="nome" id="nome">
-                                <span class="icon d-flex">
-                                    <div class="icon-inner m-auto">
-                                        <div class="bi-person"></div>
-                                    </div>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="email" class="form-label">E-mail</label>
-                            <div class="icon-control">
-                                <input type="email" class="form-control" name="email" id="email">
-                                <span class="icon d-flex">
-                                    <div class="icon-inner m-auto">
-                                        <div class="bi-envelope"></div>
-                                    </div>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="telefone" class="form-label">Telefone</label>
-
-                            <div class="icon-control">
-                                <input type="text" class="form-control" name="telefone" id="telefone">
-                                <span class="icon d-flex">
-                                    <div class="icon-inner m-auto">
-                                        <div class="bi-telephone-fill"></div>
-                                    </div>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="mensagem" class="form-label">Mensagem</label>
-                            <textarea class="form-control" name="mensagem" id="mensagem"></textarea>
-                        </div>
-                        <div class="d-flex">
-                            <button class="btn btn-primary text-uppercase slim mx-auto" type="submit">
-                                Enviar
-                            </button>
-                        </div>
+                        <?php echo do_shortcode('[contact-form-7 id="2187" title="Formulário de Contato"]') ?>
                     </div>
                 </div>
                 <div class="more col-5 d-flex">
@@ -127,7 +87,7 @@ the_post();
                     </div>
                 </div>
                 <div class="map col-3 my-auto">
-                    <iframe frameborder="0" scrolling="yes" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=&t=m&mrt=yp&z=15&output=embed&iwloc=addr&msa=0">
+                    <iframe frameborder="0" scrolling="yes" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=Rua 1719, Térreo, sala 2A, Manaus-AM&t=m&mrt=yp&z=15&output=embed&iwloc=addr&msa=0">
                     </iframe>
                 </div>
             </div>
@@ -143,7 +103,7 @@ the_post();
                     </div>
                 </div>
                 <div class="map col-3 my-auto">
-                    <iframe frameborder="0" scrolling="yes" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=&t=m&mrt=yp&z=15&output=embed&iwloc=addr&msa=0">
+                    <iframe frameborder="0" scrolling="yes" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=Av. Djalma Batista, 1661, loja 243, Manaus-AM&t=m&mrt=yp&z=15&output=embed&iwloc=addr&msa=0">
                     </iframe>
                 </div>
             </div>
@@ -172,7 +132,7 @@ the_post();
                         Faça parte da nossa equipe!
                     </div>
                     <div class="action mt-3">
-                        <a href="#" class="btn btn-primary">Ver vagas abertas</a>
+                        <a href="https://magscan.solides.jobs/" class="btn btn-primary">Ver vagas abertas</a>
                     </div>
                 </div>
             </div>

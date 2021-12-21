@@ -9,8 +9,7 @@
 // https://api.whatsapp.com/send/?phone=
 ?>
 
-<!-- <a class="floating" href="https://api.whatsapp.com/send/?phone=" target="_blank" id="floating" title="Entre em contato através do WhatsApp"> -->
-<a class="floating" href="#" id="floating" title="Entre em contato através do WhatsApp">
+<a class="floating" href="https://api.whatsapp.com/send?phone=559299039910&text=Ol%C3%A1%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es" target="_blank" id="floating" title="Entre em contato através do WhatsApp">
     <span class="bi bi-whatsapp m-auto"></span>
 </a>
 

@@ -1,19 +1,21 @@
 @import 'util';
+@import 'form';
 
 // partials
-@import 'partials/top.scss';
-@import 'partials/header.scss';
-@import 'partials/footer.scss';
-@import 'partials/bottom.scss';
-@import 'partials/searchform.scss';
+@import 'partials/top';
+@import 'partials/header';
+@import 'partials/footer';
+@import 'partials/bottom';
+@import 'partials/searchform';
 
 // templates
-@import 'templates/home.scss';
-@import 'templates/sobre.scss';
-@import 'templates/contato.scss';
-@import 'templates/exames.scss';
-@import 'templates/blog.scss';
-@import 'templates/especialista.scss';
+@import 'templates/home';
+@import 'templates/sobre';
+@import 'templates/contato';
+@import 'templates/exames';
+@import 'templates/blog';
+@import 'templates/especialista';
+@import 'templates/convenio';
 
 body {
     background-color: #e9e9e9 !important; 
@@ -23,6 +25,8 @@ body {
 
 body.single-post,
 body.post-type-archive-especialista,
+body.post-type-archive-exame,
+body.tax-tipo,
 body.single-especialista {
     background-color: white !important;
 }

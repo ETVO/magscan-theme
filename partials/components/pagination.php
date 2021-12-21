@@ -16,15 +16,23 @@
 
         $label = __("Página");
 
+        if(count($_GET)) {
+            // there are GET params set
+            $base = home_url($_SERVER['REQUEST_URI']) . "&paged=%#%";
+        }
+        else {
+            $base = home_url($_SERVER['REQUEST_URI']) . "?paged=%#%";
+        }
+
         $paginate = paginate_links( 
             array(
-                'base' => str_replace($big, '%#%', esc_url( get_pagenum_link( $big ))),
-                'format' => '?paged=%#%',
-                'current' => max(1, get_query_var('paged')),
-                'total' => $wp_query->max_num_pages,
-                'before_page_number' => '<span aria-label="' . $label . '"></span>',
-                'prev_text' => '<span class="bi bi-chevron-left"></span>',
-                'next_text' => '<span class="bi bi-chevron-right"></span>',
+                'base'                  => $base,
+                'format'                => '?paged=%#%',
+                'current'               => max(1, get_query_var('paged')),
+                'total'                 => $wp_query->max_num_pages,
+                'before_page_number'    => '<span aria-label="' . $label . '"></span>',
+                'prev_text'             => '<span class="bi bi-chevron-left"></span>',
+                'next_text'             => '<span class="bi bi-chevron-right"></span>',
             )
         );
     ?>

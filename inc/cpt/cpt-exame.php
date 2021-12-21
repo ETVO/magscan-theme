@@ -40,6 +40,7 @@ class CPT_Exame {
         register_post_type($slug, $args);
         
         $this->register_tipo_for_cpt();
+        $this->register_letra_for_cpt();
     }
 
     /**
@@ -65,6 +66,38 @@ class CPT_Exame {
                 'description'           => __('Tipos de exames'),
                 'public'                => true,
                 'hierarchical'          => true,
+                'show_in_rest'          => true,
+                'show_admin_column'     => true,
+                'has_archive'           => true,
+                'rewrite'               => array('slug' => 'exames/'. $taxonomy_slug. 's', 'with_front' => false),
+                'sort'                  => true
+            )
+        );
+    }
+
+    /**
+     * Register taxonomy for custom post type
+     *
+     * @return void
+     */
+    public function register_letra_for_cpt()
+    {
+        $taxonomy_slug = 'letra';
+        $post_type = $this->get_slug();
+
+        $labels = array(
+            'name'                          => __('Letras'),
+            'singular_name'                 => __('Letra'),
+        );
+
+        register_taxonomy(
+            $taxonomy_slug,
+            $post_type,
+            array(
+                'labels'                => $labels,
+                'description'           => __('Letras utilizadas para ordenar exames'),
+                'public'                => true,
+                'hierarchical'          => false,
                 'show_in_rest'          => true,
                 'show_admin_column'     => true,
                 'has_archive'           => true,
@@ -163,7 +196,7 @@ class CPT_Exame {
             'capability_type'       => 'post',
             'supports'              => $supports,
             'has_archive'           => true,
-            'rewrite'               => array('slug' => 'exames-e-preparos', 'with_front' => false),
+            'rewrite'               => array('slug' => 'exame', 'with_front' => false),
             'taxonomies'            => array('category')
         );
 

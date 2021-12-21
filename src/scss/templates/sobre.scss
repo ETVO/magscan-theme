@@ -145,6 +145,32 @@
 
 @media all and (max-width: 768px) {
     .template-sobre {
+
+        .sobre {
+            $over: 3rem;
+            border-top: solid 1px var(--bs-primary);
+            margin-top: calc($over + 3rem);
+    
+            .col {
+                
+                &.normal {
+                    padding: 1.5rem 0 0;
+                    padding-right: 0;
+                }
+
+                &.accent {
+                    padding: 1.5rem 1rem;
+                    margin-top: 0 !important;
+                }
+            }
+        }
+
+        .values {
+            .value {
+                padding: 1rem 1.5rem;
+            }
+        }
+
         .corpo-clinico {
             .especialista {
                 margin-top: 1rem !important;

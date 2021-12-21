@@ -16,14 +16,20 @@ $cpt_tax = 'tipo';
 $categorias = array(
     array(
         'title'     => 'Exames por Imagem',
-        'posts'     => get_tax_posts_array('exame', $cpt_tax, 'exames-por-imagem'),
+        'posts'     => get_tax_posts_array('exame', $cpt_tax, 'exames-por-imagem', 3),
         'archive'   => get_term_link('exames-por-imagem', $cpt_tax)
     ),
     array(
         'title'     => 'Exames Laboratoriais',
-        'posts'     => get_tax_posts_array('exame', $cpt_tax, 'exames-laboratoriais'),
+        'posts'     => get_tax_posts_array('exame', $cpt_tax, 'exames-laboratoriais', 3),
         'archive'   => get_term_link('exames-laboratoriais', $cpt_tax)
     )
+);
+
+$convenios = array(
+    get_posts_array('convenio', 9),
+    get_posts_array('convenio', 9, 9),
+    get_posts_array('convenio', 9, 18),
 );
 
 ?>
@@ -45,16 +51,16 @@ $categorias = array(
                 </div>
             </div>
 
-            <div class="exames mt-3 mt-md-5 row g-5">
+            <div class="exames mt-3 mt-md-5 row g-5 w-100 mx-0">
                 <?php foreach ($categorias as $categoria) : ?>
-                    <div class="col-12 col-md-6">
+                    <div class="col col-12 col-md-6">
                         <div class="exame">
                             <div class="heading">
                                 <span><?php echo $categoria['title']; ?></span>
                             </div>
 
                             <div class="links">
-                                <?php foreach ($categoria['posts'] as $exame) : ?>
+                                <?php foreach ($categoria['posts'] as $i => $exame) : ?>
                                     <a href="<?php echo get_the_permalink($exame->ID); ?>" class="link">
                                         <span class="icon bi-chevron-right"></span>
                                         <span class="text"><?php echo $exame->post_title; ?></span>
@@ -106,8 +112,15 @@ $categorias = array(
                                 </div>
                             </div>
                         </div>
+
                         <div class="image col-12 col-md-6 order-first order-md-<?php echo ($i % 2 == 0) ? 'last' : 'first'; ?>">
-                            <?php the_post_thumbnail(); ?>
+                            <?php if (has_post_thumbnail()) {
+                                the_post_thumbnail();
+                            } else {
+                            ?>
+                                <img src="<?php echo THEME_IMG_URI . 'default-exame.png' ?>" alt="<?php echo the_title(); ?>">
+                            <?php
+                            } ?>
                         </div>
                     </div>
                 </div>
@@ -122,8 +135,60 @@ $categorias = array(
 
     ?>
 
+    <div class="convenios pt-5 pb-4">
+        <div class="container col-xl-8">
+            <div class="title mb-4 text-uppercase text-center text-dark">
+                <h3>Convênios</h3>
+            </div>
+            <div id="carouselConvenios" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <?php
+                    foreach ($convenios as $i => $convenios_item) {
+                    ?>
 
-    <div class="unidades mt-5">
+                        <div class="carousel-item <?php if ($i == 0) echo 'active' ?>">
+                            <div class="row g-3 m-0 w-100 row-cols-3">
+                                <?php
+                                foreach ($convenios_item as $convenio) {
+
+                                    $thumbnail = get_the_post_thumbnail($convenio);
+                                ?>
+                                    <div class="col">
+                                        <?php if (has_post_thumbnail($convenio)) {
+                                            echo $thumbnail;
+                                        } else {
+                                        ?>
+                                            <img src="<?php echo THEME_IMG_URI . 'default-convenio.png' ?>" alt="<?php echo the_title(); ?>">
+                                        <?php
+                                        } ?>
+                                    </div>
+                                <?php
+                                }
+                                ?>
+                            </div>
+                        </div>
+
+                    <?php
+                    }
+                    ?>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselConvenios" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselConvenios" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+            <div class="action text-center pt-4 mt-2">
+                <a href="<?php echo get_post_type_archive_link('convenio'); ?>" class="btn btn-info slim text-white">Ver Todos</a>
+            </div>
+        </div>
+        <div class="underlay"></div>
+    </div>
+
+    <div class="unidades">
         <div class="container col-xl-8 d-flex flex-column">
             <div class="title text-uppercase m-auto">
                 <h3 class="mb-0">Unidades</h3>

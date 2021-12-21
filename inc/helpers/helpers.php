@@ -31,7 +31,7 @@ if (!function_exists('get_image_props_id')) {
 }
 
 if (!function_exists('get_tax_posts_array')) {
-    function get_tax_posts_array($post_type, $tax_type, $tax_slug)
+    function get_tax_posts_array($post_type, $tax_type, $tax_slug, $i = -1)
     {
         $args = array(
             'post_type' => $post_type,
@@ -42,6 +42,23 @@ if (!function_exists('get_tax_posts_array')) {
                     'terms' => $tax_slug,
                 ),
             ),
+            'posts_per_page' => $i,
+            'orderby'   => array('menu_order' => 'ASC', 'date' => 'DESC'),
+        );
+        $query = new WP_Query($args);
+        if ($query->have_posts()) {
+            return $query->posts;
+        }
+    }
+}
+
+if (!function_exists('get_posts_array')) {
+    function get_posts_array($post_type, $i = -1, $offset = 0)
+    {
+        $args = array(
+            'post_type' => $post_type,
+            'posts_per_page' => $i,
+            'offset' => $offset,
             'orderby'   => array('menu_order' => 'ASC', 'date' => 'DESC'),
         );
         $query = new WP_Query($args);
@@ -69,6 +86,17 @@ if (!function_exists('the_breadcrumb')) {
         if (!is_front_page()) {
 
             $post_type = get_post_type_object(get_post_type());
+            if(is_search()) {
+                $post_type = isset($_GET['post_type']) ? $_GET['post_type'] : 'post';
+                $post_type = get_post_type_object($post_type);
+            }
+            else if(is_post_type_archive(['exame', 'especialista', 'convenio'])) {
+            }
+            else if(is_tax()) {
+                $tax = get_taxonomy(get_queried_object()->taxonomy);
+                $post_type = $tax->object_type[0];
+                $post_type = get_post_type_object($post_type);
+            }
 
             // Start the breadcrumb with a link to your homepage
             echo '<small class="breadcrumbs text-uppercase">';
@@ -98,19 +126,30 @@ if (!function_exists('the_breadcrumb')) {
                 $need_sep = true;
             } else if (is_tax() || is_category()) {
 
-                if (is_single() && !in_array($post_type->name, ['especialista'])) {
-                    if ($post_type->name == 'exame')
+                if (!in_array($post_type->name, ['especialista'])) {
+                    if ($post_type->name == 'exame') {
                         $taxonomy = 'tipo';
-                    else
-                        $taxonomy = 'category';
 
-                    $term = get_the_terms(get_the_ID(), $taxonomy)[0];
+                        echo '<a href="';
+                        echo get_post_type_archive_link('exame');
+                        echo '" class="tlink tlink-hover-primary">';
+                        echo 'Exames';
+                        echo '</a>';
+                        echo $sep;
+                    }
+                    else{
+                        $taxonomy = 'category';
+                    }
+                    
+                    $term = get_queried_object();
+                    
                     if (isset($term)) {
                         echo '<a href="';
-                        echo get_term_link($term, $taxonomy);
+                        // echo get_term_link($term, $taxonomy);
                         echo '" class="tlink tlink-hover-primary">';
                         echo $term->name;
                         echo '</a>';
+                        $need_sep = true;
                     }
                 } else {
                     if ($post_type->name == 'especialista') {
@@ -134,6 +173,7 @@ if (!function_exists('the_breadcrumb')) {
                 } else {
                     if ($post_type->name == 'especialista') {
                         $page = get_page_by_path('sobre-nos');
+
                         echo '<a href="';
                         echo get_the_permalink($page);
                         echo '" class="tlink tlink-hover-primary">';

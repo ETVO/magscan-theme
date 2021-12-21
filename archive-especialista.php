@@ -20,7 +20,7 @@ if (is_tax() || is_category()) {
 <div class="template-archive-especialista">
     <div class="container">
         <div class="row">
-            <div class="col-6 explain">
+            <div class="col-12 col-lg-6 explain">
                 <div class="title text-uppercase text-primary">
                     <h1 class="fs-4 fw-bold">Corpo Clínico</h1>
                 </div>
@@ -28,9 +28,9 @@ if (is_tax() || is_category()) {
                     Cuidado individualizado e humanizado. Conheça os profissionais que atuam na Clínica Magscan.
                 </div>
             </div>
-            <div class="col-2"></div>
-            <div class="col-4 search-wrap d-flex">
-                <div class="mt-auto w-100">
+            <div class="d-none d-lg-block col-2"></div>
+            <div class="col-12 col-lg-4 search-wrap d-flex">
+                <div class="mt-3 mt-lg-auto w-100">
                     <div class="outline">
                         <?php get_template_part('partials/searchform', null, array(
                             'post_type' => 'especialista'
@@ -45,7 +45,7 @@ if (is_tax() || is_category()) {
         <div class="especialistas">
             <div class="inner">
                 <div class="container">
-                    <div class="row mx-0 w-100 g-4 row-cols-4">
+                    <div class="row mx-0 w-100 g-4 row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
                         <?php
                         if (have_posts()) {
                             while (have_posts()) :
@@ -64,7 +64,13 @@ if (is_tax() || is_category()) {
                                 <div class="col especialista">
                                     <div class="image">
                                         <a href="<?php echo $permalink; ?>">
-                                            <?php the_post_thumbnail(); ?>
+                                            <?php if (has_post_thumbnail()) {
+                                                the_post_thumbnail();
+                                            } else {
+                                            ?>
+                                                <img src="<?php echo THEME_IMG_URI . 'default-especialista.png' ?>" alt="<?php echo the_title(); ?>">
+                                            <?php
+                                            } ?>
                                         </a>
                                     </div>
                                     <div class="title text-center text-uppercase">
@@ -84,15 +90,15 @@ if (is_tax() || is_category()) {
                                     </div>
                                 </div>
 
-                        <?php
+                            <?php
 
                             endwhile;
                         } else {
                             ?>
-                                <div class="w-100">
-                                    <h5 class="m-auto text-center">Nenhum especialista foi encontrado.</h5>
-                                </div>
-                            <?php
+                            <div class="w-100">
+                                <h5 class="m-auto text-center">Nenhum especialista foi encontrado.</h5>
+                            </div>
+                        <?php
                         }
                         ?>
                     </div>

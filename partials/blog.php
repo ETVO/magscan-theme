@@ -16,7 +16,7 @@ $categories = get_categories();
     <div class="blog">
         <div class="container px-lg-0">
             <div class="row m-0 w-100">
-                <div class="list col col-4">
+                <div class="list col col-12 col-lg-4">
                     <div class="explain">
                         <div class="title text-uppercase text-primary">
                             <h1 class="fs-5 fw-bold">Blog</h1>
@@ -50,7 +50,7 @@ $categories = get_categories();
                         </div>
                     </div>
                 </div>
-                <div class="col">
+                <div class="exame-col col">
                     <?php
                     $args = array(
                         'post_type' => 'exame',
@@ -67,7 +67,13 @@ $categories = get_categories();
                         <div class="exame-view">
                             <div class="d-flex flex-column">
                                 <div class="image">
-                                    <?php the_post_thumbnail(); ?>
+                                    <?php if (has_post_thumbnail()) {
+                                        the_post_thumbnail();
+                                    } else {
+                                    ?>
+                                        <img src="<?php echo THEME_IMG_URI . 'default-exame.png' ?>" alt="<?php echo the_title(); ?>">
+                                    <?php
+                                    } ?>
                                 </div>
 
                                 <div class="content">
@@ -95,7 +101,7 @@ $categories = get_categories();
         </div>
     </div>
 
-    <div class="feed">
+    <div class="feed pb-4">
         <?php get_template_part('partials/components/feed') ?>
     </div>
 </div>

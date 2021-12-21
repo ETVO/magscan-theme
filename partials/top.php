@@ -28,9 +28,22 @@
                 Resultados
                 <br class="d-md-none"><span class="d-none d-md-inline"></span>de exames
             </a>
-            <button class="search-btn btn btn-outline-primary">
-                <span class="bi-search"></span>
-            </button>
+            <span class="dropdown search">
+                <button
+                    class="search-btn btn btn-outline-primary dropdown-toggle"
+                    role="button"
+                    id="dropdownSearch"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                >
+                    <span class="bi-search"></span>
+                </button>
+                <div class="dropdown-menu p-0">
+                    <div class="outline bigger">
+                        <?php get_template_part('partials/searchform') ?>
+                    </div>
+                </div>
+            </span>
         </div>
     </div>
 </div>

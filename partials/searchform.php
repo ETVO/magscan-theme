@@ -14,6 +14,9 @@ $search_label = __('Qual serviço está procurando?');
 
 if($post_type == 'especialista')
     $search_label = __('Qual especialista está procurando?');
+    
+if($post_type == 'convenio')
+    $search_label = __('Qual convênio está procurando?');
 
 ?>
 
@@ -30,7 +33,6 @@ if($post_type == 'especialista')
                     value="<?php the_search_query(); ?>" 
                     oninvalid="this.setCustomValidity('<?php echo $search_validity; ?>')" 
                     placeholder="<?php echo $search_label; ?>" 
-                    required
                 >
                 <button type="submit" class="icon submit" title="<?php echo $search_label; ?>">
                     <div class="icon-inner m-auto">

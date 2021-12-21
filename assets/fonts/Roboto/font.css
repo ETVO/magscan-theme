@@ -55,7 +55,7 @@
 /* Regular Italic */
 @font-face {
     font-family: 'Roboto';
-    src: url('./fonts/Roboto-RegularItalic.ttf');
+    src: url('./fonts/Roboto-Italic.ttf');
     font-weight: 400;
     font-style: italic;
 }

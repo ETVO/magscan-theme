@@ -26,8 +26,15 @@ $exames = array(
     )
 );
 
+$convenios = array(
+    get_posts_array('convenio', 9),
+    get_posts_array('convenio', 9, 9),
+    get_posts_array('convenio', 9, 18),
+);
+
 $exames1 = $exames[0];
 $exames2 = $exames[1];
+
 
 ?>
 
@@ -80,7 +87,13 @@ $exames2 = $exames[1];
                         ?>
                         <div class="inner ms-auto">
                             <div class="image">
-                                <?php the_post_thumbnail(); ?>
+                                <?php if (has_post_thumbnail()) {
+                                    the_post_thumbnail();
+                                } else {
+                                ?>
+                                    <img src="<?php echo THEME_IMG_URI . 'default-exame.png' ?>" alt="<?php echo the_title(); ?>">
+                                <?php
+                                } ?>
                             </div>
                             <div class="content">
                                 <div class="title">
@@ -136,7 +149,13 @@ $exames2 = $exames[1];
                         </div>
                     </div>
                     <div class="image col-12 col-md-6 order-first order-md-<?php echo ($i % 2 != 0) ? 'last' : 'first'; ?>">
-                        <?php the_post_thumbnail(); ?>
+                        <?php if (has_post_thumbnail()) {
+                            the_post_thumbnail();
+                        } else {
+                        ?>
+                            <img src="<?php echo THEME_IMG_URI . 'default-exame.png' ?>" alt="<?php echo the_title(); ?>">
+                        <?php
+                        } ?>
                     </div>
                 </div>
             </div>
@@ -151,7 +170,7 @@ $exames2 = $exames[1];
 
     <div class="laboratorio">
         <div class="container col-xl-9">
-            <div class="d-flex">
+            <div class="d-flex flex-column flex-lg-row">
                 <div class="list">
                     <div class="exame">
                         <div class="heading">
@@ -191,11 +210,64 @@ $exames2 = $exames[1];
         </div>
     </div>
 
+    <div class="convenios pt-5 pb-4">
+        <div class="container col-xl-8">
+            <div class="title mb-4 text-uppercase text-center text-dark">
+                <h3>Convênios</h3>
+            </div>
+            <div id="carouselConvenios" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <?php
+                    foreach ($convenios as $i => $convenios_item) {
+                    ?>
+
+                        <div class="carousel-item <?php if ($i == 0) echo 'active' ?>">
+                            <div class="row g-3 m-0 w-100 row-cols-3">
+                                <?php
+                                foreach ($convenios_item as $convenio) {
+
+                                    $thumbnail = get_the_post_thumbnail($convenio);
+                                ?>
+                                    <div class="col">
+                                        <?php if (has_post_thumbnail($convenio)) {
+                                            echo $thumbnail;
+                                        } else {
+                                        ?>
+                                            <img src="<?php echo THEME_IMG_URI . 'default-convenio.png' ?>" alt="<?php echo the_title(); ?>">
+                                        <?php
+                                        } ?>
+                                    </div>
+                                <?php
+                                }
+                                ?>
+                            </div>
+                        </div>
+
+                    <?php
+                    }
+                    ?>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselConvenios" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselConvenios" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+            <div class="action text-center pt-4 mt-2">
+                <a href="<?php echo get_post_type_archive_link('convenio'); ?>" class="btn btn-info slim text-white">Ver Todos</a>
+            </div>
+        </div>
+        <div class="underlay"></div>
+    </div>
+
     <div class="fale-conosco">
 
         <div class="container ">
             <div class="row w-100 m-0 justify-content-center">
-                <div class="more col-5 d-flex">
+                <div class="more col-12 col-lg-5 d-flex">
                     <div class="m-auto">
                         <h4 class="title fw-bold text-uppercase">
                             Fale Conosco!
@@ -207,63 +279,69 @@ $exames2 = $exames[1];
                         </div>
                         <div class="banner mb-4">
                             <div class="text">
-                                Você pode entrar em contato pelo nosso <i class="fw-bold">WhatsApp</i>!
+                                Você pode entrar em contato pelo nosso
+                                <a class="tlink tlink-hover-decoration" href="https://api.whatsapp.com/send?phone=559299039910&text=Ol%C3%A1%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es" title="Entre em contato através do WhatsApp"><i class="fw-bold">WhatsApp</i></a>!
                             </div>
 
                             <div class="icon mt-3">
-                                <a href="#" title="Entre em contato através do WhatsApp">
+                                <a href="https://api.whatsapp.com/send?phone=559299039910&text=Ol%C3%A1%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es" title="Entre em contato através do WhatsApp">
                                     <span class="bi bi-whatsapp m-auto"></span>
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="form col-5">
+                <div class="form col-12 col-lg-5">
                     <div class="form-content px-4">
-                        <div class="form-group mb-3">
-                            <label for="nome" class="form-label">Nome</label>
-                            <div class="icon-control">
-                                <input type="text" class="form-control" name="nome" id="nome">
-                                <span class="icon d-flex">
-                                    <div class="icon-inner m-auto">
-                                        <div class="bi-person"></div>
-                                    </div>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="email" class="form-label">E-mail</label>
-                            <div class="icon-control">
-                                <input type="email" class="form-control" name="email" id="email">
-                                <span class="icon d-flex">
-                                    <div class="icon-inner m-auto">
-                                        <div class="bi-envelope"></div>
-                                    </div>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="telefone" class="form-label">Telefone</label>
-
-                            <div class="icon-control">
-                                <input type="text" class="form-control" name="telefone" id="telefone">
-                                <span class="icon d-flex">
-                                    <div class="icon-inner m-auto">
-                                        <div class="bi-telephone-fill"></div>
-                                    </div>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="mensagem" class="form-label">Mensagem</label>
-                            <textarea class="form-control" name="mensagem" id="mensagem"></textarea>
-                        </div>
-                        <div class="d-flex">
-                            <button class="btn btn-primary text-uppercase slim mx-auto" type="submit">
-                                Enviar
-                            </button>
-                        </div>
+                        <?php echo do_shortcode('[contact-form-7 id="2187" title="Formulário de Contato"]') ?>
                     </div>
+                    <?php if (false) : ?>
+                        <div class="form-content px-4">
+                            <div class="form-group mb-3">
+                                <label for="nome" class="form-label">Nome</label>
+                                <div class="icon-control">
+                                    <input type="text" class="form-control" name="nome" id="nome">
+                                    <span class="icon d-flex">
+                                        <div class="icon-inner m-auto">
+                                            <div class="bi-person"></div>
+                                        </div>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="email" class="form-label">E-mail</label>
+                                <div class="icon-control">
+                                    <input type="email" class="form-control" name="email" id="email">
+                                    <span class="icon d-flex">
+                                        <div class="icon-inner m-auto">
+                                            <div class="bi-envelope"></div>
+                                        </div>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="telefone" class="form-label">Telefone</label>
+
+                                <div class="icon-control">
+                                    <input type="text" class="form-control" name="telefone" id="telefone">
+                                    <span class="icon d-flex">
+                                        <div class="icon-inner m-auto">
+                                            <div class="bi-telephone-fill"></div>
+                                        </div>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="mensagem" class="form-label">Mensagem</label>
+                                <textarea class="form-control" name="mensagem" id="mensagem"></textarea>
+                            </div>
+                            <div class="d-flex">
+                                <button class="btn btn-primary text-uppercase slim mx-auto" type="submit">
+                                    Enviar
+                                </button>
+                            </div>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

@@ -10,16 +10,16 @@
 
 <footer>
     <div class="bg-white navbar navbar-expand-lg text-dark">
-        <div class="container pb-2 pt-3 px-0">
+        <div class="container py-3 pb-lg-2 px-lg-0">
             <div class="navbar-brand me-auto p-0">
                 <?php the_custom_logo(); ?>
             </div>
 
-            <button class="navbar-toggler p-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuDropdown" aria-controls="mainMenuDropdown" aria-expanded="false" aria-label="<?php echo __("Menu") ?>">
+            <!-- <button class="navbar-toggler p-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuDropdown" aria-controls="mainMenuDropdown" aria-expanded="false" aria-label="<?php echo __("Menu") ?>">
                 <span class="icon bi bi-list"></span>
-            </button>
+            </button> -->
 
-            <div class="collapse navbar-collapse" id="mainMenuDropdown">
+            <div class="d-flex w-100" id="mainMenuDropdown">
                 <div class="actions ms-auto d-flex">
                     <a href="<?php echo esc_url(get_permalink(get_option('page_for_posts'))); ?>" class="goto-blog text-uppercase text-decoration-none">
                         <span class="icon">
@@ -75,6 +75,10 @@
                 <h5>Cadastre seu e-mail para receber informativos</h5>
             </div>
             <div class="form">
+                
+                <?php echo do_shortcode('[contact-form-7 id="2281" title="Newsletter"]'); ?>
+
+                <?php if(false): ?>
                 <form onsubmit="return false;">
                     <div class="mb-3">
                         <input type="text" class="form-control" id="name" placeholder="Nome">
@@ -93,6 +97,7 @@
 
                     <button type="submit" class="btn btn-primary">Receber Informativos</button>
                 </form>
+                <?php endif; ?>
                 <div class="bottom-text fs-6">
                     <b>DIRETOR TÉCNICO MÉDICO</b>
                     <br />CRM - AM 340

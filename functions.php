@@ -111,6 +111,7 @@ final class Magscan_Theme
 
 		require_once($dir . 'cpt/cpt-exame.php');
 		require_once($dir . 'cpt/cpt-especialista.php');
+		require_once($dir . 'cpt/cpt-convenio.php');
 	}
 
 	/**
@@ -175,12 +176,18 @@ final class Magscan_Theme
 		);
 
 
-		// Include template archive-especialista for searches of this post type
+		// Include template archive for searches of custom post types
 		add_filter('template_include', function ($template) {
 			global $wp_query;
 			$post_type = get_query_var('post_type');
 			if ($wp_query->is_search && $post_type == 'especialista') {
 				return locate_template('archive-especialista.php');
+			}
+			if ($wp_query->is_search && $post_type == 'exame') {
+				return locate_template('archive-exame.php');
+			}
+			if ($wp_query->is_search && $post_type == 'convenio') {
+				return locate_template('template-convenio.php');
 			}
 			return $template;
 		});
@@ -290,6 +297,15 @@ final class Magscan_Theme
 			if (isset($_GET['category'])) {
 				$category = $_GET['category'];
 				$query->set('category_name', $category);
+			}
+
+			if (isset($_GET['letra'])) {
+				$letra = $_GET['letra'];
+				$query->set('tax_query', array(
+					'taxonomy'	=> 'letra',
+					'field'		=> 'slug',
+					'terms'		=> $letra
+				));
 			}
 		}
 	}

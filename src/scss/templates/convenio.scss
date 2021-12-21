@@ -1,0 +1,105 @@
+.template-convenio {
+    .feed-wrap {
+        .convenio-feed {
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(#000, .16);
+            padding: 2rem 1.5rem;
+
+            .convenio {
+                .image {
+                    img {
+                        display: block;
+                        width: 100%;
+                        height: auto;
+                        object-fit: cover;
+                    }
+                }
+                .title {
+
+                }
+            }
+        }
+    }
+    .seja-parceiro {
+        background-color: var(--bs-primary);
+        padding: 3rem 0;
+
+        .col {
+            margin-right: 2rem;
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+
+        .form {
+            padding: 1.5rem 1.5rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 10px 20px rgba(#000, 0.2);
+
+            .form-content {
+                .form-group {
+                    label {
+                        text-transform: uppercase;
+                        font-size: 0.875rem;
+                    }
+                }
+
+                .form-row {
+                    .form-col {
+                        margin: 0;
+                        &:first-child {
+                            padding-left: 0 !important;
+                            padding-right: .5rem;
+                        }
+                        &:last-child {
+                            padding-right: 0 !important;
+                            padding-left: .5rem;
+                        }
+                    }
+                }
+            }
+        }
+
+        .image {
+            img {
+                border-radius: 10px;
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+    
+    > .content-wrap {
+        max-width: 650px;
+        margin: 0 auto;
+    }
+}
+
+@media all and (max-width: 1200px) {
+    .template-convenio {
+        .form {
+            .form-row .form-col {
+                &:first-child, &:last-child {
+                    padding-left: 0 !important;
+                    padding-right: 0 !important;
+                }
+            }
+        }
+    }
+}
+
+@media all and (max-width: 560px) {
+    .template-convenio {
+        .form {
+            padding: 1rem 0 !important;
+
+            .form-content {
+                padding: 0 1rem !important;
+            }
+        }
+    }
+}
