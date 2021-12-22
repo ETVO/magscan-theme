@@ -103,7 +103,9 @@
             .image {
                 img {
                     display: block;
-                    height: 250px;
+                    height: auto;
+                    max-height: 250px;
+                    object-fit: contain;
                     border-radius: 10px;
                 }
             }
@@ -135,9 +137,56 @@
         .box {
             background-color: #e0e0e0;
             padding: 2.5rem 3rem;
-            margin-right: 4rem;
+            
+            margin-right: 1rem;
 
             &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+@media all and (max-width: 992px) {
+    .template-contato {
+
+        .contato {
+            padding: 1.5rem 0;
+            .form {
+                margin: 0;
+                padding: 1.5rem;
+                
+                .form-content {
+                    margin: 0 auto;
+                    display: flex;
+                    padding: 0 !important;
+
+                    > * {
+                        margin: 0 auto;
+                    }
+                }
+            }
+
+            .more {
+                padding: 1.5rem;
+            }
+        }
+
+        .unidades-cards {
+            .unidade {
+                .image img, .map iframe {
+                    max-height: 350px;
+                }
+            }
+        }
+    }
+}
+
+@media all and (max-width: 768px) {
+    
+    .template-contato {
+        .boxes {
+            .box {
                 margin-right: 0;
             }
         }

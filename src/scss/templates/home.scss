@@ -2,7 +2,6 @@
     margin-top: -200px;
 
     .home-cta {
-
         padding: 2rem 0;
         padding-top: calc(200px + 3rem);
 
@@ -15,12 +14,12 @@
             inset: 0;
             opacity: 1;
 
-            transition: opacity .2s;
+            transition: opacity 0.2s;
         }
 
         .cta {
             .title {
-                color: #4c4c4c;
+                // color: #4c4c4c;
             }
         }
 
@@ -42,6 +41,23 @@
         .home-cta {
             .bg-img {
                 opacity: 0.6;
+            }
+        }
+    }
+}
+
+@media all and (max-width: 768px) {
+    .template-home {
+        .home-cta {
+            .exames {
+                > .col {
+                    &:first-child {
+                        padding-right: 0 !important;
+                    }
+                    &:last-child {
+                        padding-left: 0 !important;
+                    }
+                }
             }
         }
     }

@@ -301,6 +301,15 @@
     }
 }
 
+@media all and (max-width: 960px) {
+    .template-exame {
+        .content {
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
+        }
+    }
+}
+
 @media all and (max-width: 768px) {
     .template-exame.exame-a {
         .underlay {
