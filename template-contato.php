@@ -33,7 +33,7 @@ the_post();
                 <div class="form col-5">
                     <div class="banner d-flex mb-4">
                         <div class="icon my-auto me-4">
-                            <a href="https://api.whatsapp.com/send?phone=559299039910&text=Ol%C3%A1%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es" title="Entre em contato através do WhatsApp">
+                            <a href="https://api.whatsapp.com/send?phone=559299039910&text=Ol%C3%A1%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es" target="_blank" title="Entre em contato através do WhatsApp">
                                 <span class="bi bi-whatsapp m-auto"></span>
                             </a>
                         </div>

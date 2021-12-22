@@ -33,14 +33,14 @@
                     </a>
 
                     <div class="social-icons">
-                        <a class="social-icon btn btn-outline-primary" href="https://facebook.com">
+                        <a class="social-icon btn btn-outline-primary" href="https://web.facebook.com/ClinicaMagscan/">
                             <span class="bi-facebook"></span>
                         </a>
-                        <a class="social-icon btn btn-outline-primary" href="https://instagram.com">
+                        <a class="social-icon btn btn-outline-primary" href="https://www.instagram.com/clinicamagscan/">
                             <span class="bi-instagram"></span>
                         </a>
-                        <a class="social-icon btn btn-outline-primary" href="https://linkedin.com">
-                            <span class="bi-linkedin"></span>
+                        <a class="social-icon btn btn-outline-primary" href="https://www.youtube.com/channel/UC24ZqHtdRGmUgy3BbEHu-dA">
+                            <span class="bi-youtube"></span>
                         </a>
                     </div>
                 </div>
