@@ -8,6 +8,18 @@
  */
 ?>
 
+<div class="cookies-consent" id="cookiePopup">
+    <div class="title mb-1 fs-6">
+        <b><span class="bi-patch-question-fill text-primary"></span> Este site usa cookies.</b>
+    </div>
+    <div class="text">
+        Ao utilizar os nossos serviços, você concorda com tal monitoramento.
+    </div>
+    <div class="action mt-2 d-flex">
+        <button class="btn btn-primary ms-auto" id="cookieAccept" title="Aceitar utilização de cookies para monitoramento.">Aceitar</button>
+    </div>
+</div>
+
 <footer>
     <div class="bg-white navbar navbar-expand-lg text-dark">
         <div class="container py-3 pb-lg-2 px-lg-0">

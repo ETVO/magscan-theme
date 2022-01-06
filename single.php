@@ -11,21 +11,22 @@ get_header();
 
 ?>
 <div class="template-single-post">
-    <div class="content-wrap">
-        <div class="title text-center mb-3">
+    <div class="content-wrap px-3 px-md-0">
+        <div class="title text-center mb-2">
             <h1 class="fs-3 fw-normal"><?php the_title(); ?></h1>
         </div>
 
         <div class="meta-bar d-flex py-2">
             <div class="share me-auto">
-                <a href="#" class="tlink d-flex">
+                <?php echo do_shortcode('[shared_counts]'); ?>
+                <!-- <a href="#" class="tlink d-flex">
                     <span class="text text-uppercase small">
                         Compartilhar
                     </span>
                     <span class="ms-2 icon">
                         <span class="bi-share"></span>
                     </span>
-                </a>
+                </a> -->
             </div>
 
             <div class="date ms-auto d-flex">
@@ -39,20 +40,13 @@ get_header();
         </div>
 
         <div class="content">
-            <?php the_content(); ?>
+            <?php the_content(); ?> 
         </div>
 
 
         <div class="meta-bar d-flex pt-2 pb-4">
             <div class="share ms-auto">
-                <a href="#" class="tlink d-flex">
-                    <span class="text text-uppercase small">
-                        Compartilhar
-                    </span>
-                    <span class="ms-2 icon">
-                        <span class="bi-share"></span>
-                    </span>
-                </a>
+                <?php echo do_shortcode('[shared_counts]'); ?>
             </div>
         </div>
 
@@ -62,8 +56,11 @@ get_header();
             </div>
             <div class="desc col col-8">
                 <small>
-                    <b>Nonummy nibh euismod</b>
-                    <div>CRO/SC 5000 - umsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</div>
+                    <?php 
+                    $name = get_the_author_meta('display_name');
+                    if($name == '') $name = 'Redação'; ?>
+                    <b><?php echo $name; ?></b>
+                    <div><?php the_author_meta('description'); ?></div>
                 </small>
             </div>
         </div>

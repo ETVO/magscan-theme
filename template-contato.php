@@ -114,25 +114,29 @@ the_post();
         <div class="container col-xl-8">
             <div class="row g-3">
                 <div class="box col-12 col-md">
-                    <div class="title text-dark">
-                        <h4>PERGUNTAS FREQUENTES</h4>
-                    </div>
-                    <div class="mt-3">
-                        Resultados de exames
-                        <br>Atendimento
-                        <br>Consultas
-                        <br>Exames de imagem
+                    <div class="inner">
+                        <div class="title text-dark">
+                            <h4>PERGUNTAS FREQUENTES</h4>
+                        </div>
+                        <div class="mt-3">
+                            Resultados de exames
+                            <br>Atendimento
+                            <br>Consultas
+                            <br>Exames de imagem
+                        </div>
                     </div>
                 </div>
                 <div class="box col-12 col-md">
-                    <div class="title text-dark">
-                        <h4>TRABALHE CONOSCO</h4>
-                    </div>
-                    <div class="mt-3">
-                        Faça parte da nossa equipe!
-                    </div>
-                    <div class="action mt-3">
-                        <a href="https://magscan.solides.jobs/" class="btn btn-primary">Ver vagas abertas</a>
+                    <div class="inner">
+                        <div class="title text-dark">
+                            <h4>TRABALHE CONOSCO</h4>
+                        </div>
+                        <div class="mt-3">
+                            Faça parte da nossa equipe!
+                        </div>
+                        <div class="action mt-3">
+                            <a href="https://magscan.solides.jobs/" class="btn btn-primary">Ver vagas abertas</a>
+                        </div>
                     </div>
                 </div>
             </div>

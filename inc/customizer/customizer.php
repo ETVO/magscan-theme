@@ -1,6 +1,5 @@
 <?php
 /**
- * TO-DO
  * Customizer controls and options
  * 
  * @package WordPress
@@ -11,6 +10,7 @@
 if (!defined('ABSPATH')) {
     exit;
 }
+
 
 class Magscan_Customizer {
 
@@ -50,37 +50,33 @@ class Magscan_Customizer {
         /**
          * ------------------- Section ----------------
          */
-        $section = 'magscan_contact';
+        $section = 'magscan_options';
         $wp_customize->add_section(
             $section,
             array(
-                'title'    => __('Contatos'),
+                'title'    => __('Sobre Nós'),
                 'priority' => 10,
                 'panel'    => $panel,
             )
         );
 
         /**
-         *  WhatsApp No.
+         *  Test link
          */
         $wp_customize->add_setting(
-            'magscan_whatsapp',
+            'magscan_test_link',
             array(
                 'default' => ''
             )
         );
-       
-        Kirki::add_field( 
-            'title_whatsapp',
-            array(
-                'type'      => 'custom',
-                'settings'  => 'title_whatsapp',
-                'section'   => $section,
-                'default'   => '<h3 class="customize-section-title">' 
-                    . __('WhatsApp') 
-                    . '</h3>'
-            )
-        );
+
+        Kirki::add_field( 'magscan_test_link', [
+            'type'     => 'link',
+            'settings' => 'magscan_test_link',
+            'label'    => esc_html__('Link do teste'),
+            'description'    => esc_html__('"Quero fazer o teste"'),
+            'section'  => $section
+        ] );
         
     }
 }

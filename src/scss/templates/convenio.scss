@@ -1,4 +1,10 @@
 .template-convenio {
+    .explain {
+        .text {
+            font-size: 1.1rem;
+        }
+    }
+    
     .feed-wrap {
         .convenio-feed {
             background-color: white;
@@ -24,6 +30,11 @@
     .seja-parceiro {
         background-color: var(--bs-primary);
         padding: 3rem 0;
+
+        .text {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
 
         .col {
             margin-right: 2rem;

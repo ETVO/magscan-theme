@@ -16,10 +16,10 @@ $especialidade = get_field('especialidade');
 ?>
 <div class="template-single-especialista pb-4">
     <div class="container col-xl-8">
-        <div class="title text-center text-primary text-uppercase">
-            <h1 class="fs-3"><?php echo $nome_completo; ?></h1>
+        <div class="title text-center text-primary text-uppercase mt-2">
+            <h1 class="fs-2 fw-bold"><?php echo $nome_completo; ?></h1>
         </div>
-        <div class="row m-0 w-100 mt-3">
+        <div class="row m-0 w-100 mt-4 pt-2">
             <div class="col">
                 <div class="image">
                     <?php the_post_thumbnail(); ?>
@@ -31,7 +31,7 @@ $especialidade = get_field('especialidade');
                 </div>
             </div>
             <div class="col">
-                <div class="dados fw-bold mb-4">
+                <div class="dados fw-bold mb-4 fs-5">
                     <div class="credenciais">
                         <?php echo $credenciais; ?>
                     </div>

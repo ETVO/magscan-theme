@@ -45,7 +45,7 @@ $exames2 = $exames[1];
                 <div class="list col-12 col-lg-4">
                     <div class="explain">
                         <div class="title text-uppercase">
-                            <h1 class="fs-5 fw-bold">Exames e Preparos</h1>
+                            <h1 class="fs-4 fw-bold">Exames e Preparos</h1>
                         </div>
                         <div class="text mt-2">
                             Aqui você encontra informações sobre o exame que você deseja realizar.
@@ -53,7 +53,7 @@ $exames2 = $exames[1];
                     </div>
                     <div class="exame">
                         <div class="heading">
-                            <span><?php echo $exames1['title'] ?></span>
+                            <h2><?php echo $exames1['title'] ?></span>
                         </div>
 
                         <div class="links">
@@ -87,13 +87,15 @@ $exames2 = $exames[1];
                         ?>
                         <div class="inner ms-auto">
                             <div class="image">
-                                <?php if (has_post_thumbnail()) {
-                                    the_post_thumbnail();
-                                } else {
-                                ?>
-                                    <img src="<?php echo THEME_IMG_URI . 'default-exame.png' ?>" alt="<?php echo the_title(); ?>">
-                                <?php
-                                } ?>
+                                <a href="<?php the_permalink(); ?>">
+                                    <?php if (has_post_thumbnail()) {
+                                        the_post_thumbnail();
+                                    } else {
+                                    ?>
+                                        <img src="<?php echo THEME_IMG_URI . 'default-exame.png' ?>" alt="<?php echo the_title(); ?>">
+                                    <?php
+                                    } ?>
+                                </a>
                             </div>
                             <div class="content">
                                 <div class="title">
@@ -149,13 +151,15 @@ $exames2 = $exames[1];
                         </div>
                     </div>
                     <div class="image col-12 col-md-6 order-first order-md-<?php echo ($i % 2 != 0) ? 'last' : 'first'; ?>">
-                        <?php if (has_post_thumbnail()) {
-                            the_post_thumbnail();
-                        } else {
-                        ?>
-                            <img src="<?php echo THEME_IMG_URI . 'default-exame.png' ?>" alt="<?php echo the_title(); ?>">
-                        <?php
-                        } ?>
+                        <a href="<?php the_permalink(); ?>">
+                            <?php if (has_post_thumbnail()) {
+                                the_post_thumbnail();
+                            } else {
+                            ?>
+                                <img src="<?php echo THEME_IMG_URI . 'default-exame.png' ?>" alt="<?php echo the_title(); ?>">
+                            <?php
+                            } ?>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -174,7 +178,7 @@ $exames2 = $exames[1];
                 <div class="list">
                     <div class="exame">
                         <div class="heading">
-                            <span><?php echo $exames2['title'] ?></span>
+                            <h2><?php echo $exames2['title'] ?></h2>
                         </div>
 
                         <div class="links">
@@ -201,7 +205,7 @@ $exames2 = $exames[1];
                         <div class="action-row row w-100 m-0 d-flex">
                             <span class="col col-lg-7 p-0 text m-auto ms-0">Agende seu exame aqui</span>
                             <span class="col col-lg-5 p-0 action m-auto me-0 d-flex">
-                                <a href="https://magscan.centraldemarcacao.com.br/" class="btn btn-primary ms-auto">Ver resultados</a>
+                                <a href="https://magscan.centraldemarcacao.com.br/" class="btn btn-primary ms-auto">Agendar exame</a>
                             </span>
                         </div>
                     </div>
@@ -227,6 +231,7 @@ $exames2 = $exames[1];
                                 foreach ($convenios_item as $convenio) {
 
                                     $thumbnail = get_the_post_thumbnail($convenio);
+                                    $permalink = get_the_permalink($convenio);
                                 ?>
                                     <div class="col">
                                         <?php if (has_post_thumbnail($convenio)) {
@@ -269,16 +274,16 @@ $exames2 = $exames[1];
             <div class="row w-100 m-0 justify-content-center">
                 <div class="more col-12 col-lg-5 d-flex">
                     <div class="m-auto">
-                        <h4 class="title fw-bold text-uppercase">
+                        <h3 class="title fw-bold text-uppercase">
                             Fale Conosco!
-                        </h4>
+                        </h3>
                         <div class="text mt-3">
-                            <p>
+                            <p class="fs-5">
                                 Para dúvidas, agendamentos, comentários e avaliações, entre em contato conosco.
                             </p>
                         </div>
                         <div class="banner mb-4">
-                            <div class="text">
+                            <div class="text fs-5">
                                 Você pode entrar em contato pelo nosso
                                 <a class="tlink tlink-hover-decoration" href="https://api.whatsapp.com/send?phone=559299039910&text=Ol%C3%A1%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es" title="Entre em contato através do WhatsApp"><i class="fw-bold">WhatsApp</i></a>!
                             </div>

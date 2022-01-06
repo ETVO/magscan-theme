@@ -8,7 +8,7 @@
  */
 ?>
 
-<div class="top d-flex">
+<div class="top d-none d-md-flex">
     <div class="container d-flex flex-column flex-md-row">
         <div class="social-icons mx-auto ms-md-0 me-md-auto mb-md-0">
             <a class="social-icon btn btn-outline-primary" href="https://web.facebook.com/ClinicaMagscan/">
@@ -21,7 +21,7 @@
                 <span class="bi-youtube"></span>
             </a>
         </div>
-        <div class="actions d-none d-md-block ms-auto">
+        <div class="actions ms-auto">
             <a class="btn btn-primary" href="https://magscan.centraldemarcacao.com.br/">
                 Agendar Consulta
             </a>
@@ -34,7 +34,7 @@
                     <span class="bi-search"></span>
                 </button>
                 <div class="dropdown-menu p-0">
-                    <div class="outline bigger">
+                    <div class="outline">
                         <?php get_template_part('partials/searchform') ?>
                     </div>
                 </div>

@@ -20,7 +20,7 @@ the_post();
             <div class="row">
                 <div class="col-12 col-lg-4">
                     <div class="title text-uppercase text-primary">
-                        <h3 class="fw-bold">A Magscan</h3>
+                        <h1 class="fs-3 fw-bold">A Magscan</h1>
                     </div>
 
                     <div class="text mt-3">
@@ -72,11 +72,11 @@ the_post();
     <div class="values">
         <div class="container">
             <div class="row m-0 w-100 g-4 justify-content-center">
-                <div class="col">
+                <div class="col-12 col-md-6 col-lg-4">
                     <div class="value">
                         <div class="inner">
                             <div class="title">
-                                <h5>Uma visão do futuro</h5>
+                                <h4>Uma visão do futuro</h4>
                             </div>
                             <div class="text">
                                 Ser reconhecida como uma empresa de excelência na área de Medicina Diagnóstica na cidade de Manaus e no Brasil, com o compromisso de aprimoramento contínuo.
@@ -84,11 +84,11 @@ the_post();
                         </div>
                     </div>
                 </div>
-                <div class="col">
+                <div class="col-12 col-md-6 col-lg-4">
                     <div class="value">
                         <div class="inner">
                             <div class="title">
-                                <h5>Valores inestimáveis</h5>
+                                <h4>Valores inestimáveis</h4>
                             </div>
                             <div class="text">
                                 Ética | Confiança | Responsabilidade | Comprometimento | Servir com amor | Buscar continuamente qualidade e excelência | Ser humano | lembrar que somos e lidamos com pessoas
@@ -96,11 +96,11 @@ the_post();
                         </div>
                     </div>
                 </div>
-                <div class="col">
+                <div class="col-12 col-md-6 col-lg-4">
                     <div class="value">
                         <div class="inner">
                             <div class="title">
-                                <h5><span class="fw-normal">Acesse o nosso teste</span><br>“Quais exames você precisa fazer anualmente?”</h5>
+                                <h5><span class="fw-normal">Acesse o nosso teste</span><br>“Quais exames você precisa fazer anualmente?”</h4>
                             </div>
                             <div class="text">
                                 <a href="" class="btn btn-info text-white text-uppercase fw-bold">
@@ -117,7 +117,7 @@ the_post();
     <div class="corpo-clinico">
         <div class="container col-xl-8">
             <div class="title text-center text-uppercase">
-                <h3 class="fs-4">Corpo Clínico</h3>
+                <h3>Corpo Clínico</h3>
             </div>
             <div class="row w-100 m-0 g-5 mt-4">
                 <?php
@@ -144,7 +144,13 @@ the_post();
                         <div class="col-12 col-md-4 especialista text-center">
                             <div class="image">
                                 <a href="<?php echo $permalink; ?>">
-                                    <?php the_post_thumbnail(); ?>
+                                    <?php if (has_post_thumbnail()) {
+                                        the_post_thumbnail();
+                                    } else {
+                                    ?>
+                                        <img src="<?php echo THEME_IMG_URI . 'default-especialista.png' ?>" alt="<?php echo the_title(); ?>">
+                                    <?php
+                                    } ?>
                                 </a>
                             </div>
                             <div class="title text-center text-uppercase">
@@ -179,7 +185,7 @@ the_post();
             </div>
             <div class="row w-100 m-0 g-5 justify-content-center">
                 <div class="col-12 col-md-6 col-lg-5">
-                    <div id="carouselUnidadeAtlantic" class="carousel slide" data-bs-ride="carousel">
+                    <div id="carouselUnidadeAtlantic" class="carousel-unidades unidade-fade-left carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="6000">
                         <div class="carousel-indicators">
                             <button type="button" data-bs-target="#carouselUnidadeAtlantic" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                             <button type="button" data-bs-target="#carouselUnidadeAtlantic" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -194,11 +200,11 @@ the_post();
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselUnidadeAtlantic" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
+                            <span class="visually-hidden">Anterior</span>
                         </button>
                         <button class="carousel-control-next" type="button" data-bs-target="#carouselUnidadeAtlantic" data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
+                            <span class="visually-hidden">Próximo</span>
                         </button>
                     </div>
 
@@ -213,7 +219,7 @@ the_post();
                 <div class="d-none d-lg-block col-1"></div>
                 <div class="col-12 col-md-6 col-lg-5">
 
-                    <div id="carouselUnidadeMillenium" class="carousel slide" data-bs-ride="carousel">
+                    <div id="carouselUnidadeMillenium" class="carousel-unidades carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="6000">
                         <div class="carousel-indicators">
                             <button type="button" data-bs-target="#carouselUnidadeMillenium" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                             <button type="button" data-bs-target="#carouselUnidadeMillenium" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -228,11 +234,11 @@ the_post();
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselUnidadeMillenium" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
+                            <span class="visually-hidden">Anterior</span>
                         </button>
                         <button class="carousel-control-next" type="button" data-bs-target="#carouselUnidadeMillenium" data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
+                            <span class="visually-hidden">Próximo</span>
                         </button>
                     </div>
 
@@ -247,7 +253,7 @@ the_post();
                 </div>
                 <div class="d-flex mt-4">
                     <div class="m-auto">
-                        <a href="" class="btn btn-info slim text-white fw-bold">Agendar Exames</a>
+                        <a href="https://magscan.centraldemarcacao.com.br/" class="btn btn-info slim text-white fw-bold">Agendar Exames</a>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,40 @@
+@media all and (min-width: 768px) {
+    .carousel-unidades {
+
+        .carousel-inner {
+            overflow: visible;
+    
+            .carousel-item {
+                transition: transform .4s;
+    
+                &:not(.active) {
+                    display: block;
+                    opacity: .65;
+                    float: unset;
+                    position: absolute;
+                    transform: translate(35%, 0) scale(.75);
+                }
+    
+                &-start,
+                &-end {
+                    &.active {
+                        z-index: 1 !important;
+                        opacity: 1 !important;
+                        transition: opacity .2s;
+                    }
+    
+                    &.carousel-item-next,
+                    &.carousel-item-prev {
+                        z-index: 0 !important;
+                    }
+                }
+            }
+        }
+
+        &.unidade-fade-left {
+            .carousel-inner .carousel-item:not(.active) {
+                transform: translate(-35%, 0) scale(.75);
+            }
+        }
+    }
+}

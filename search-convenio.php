@@ -77,7 +77,7 @@ get_header();
                             </div>
                             <div class="title pt-2 text-center">
                                 <a class="tlink tlink-hover-primary" href="<?php echo $permalink; ?>">
-                                    <h6><?php echo $title; ?></h6>
+                                    <h2 class="fs-6"><?php echo $title; ?></h2>
                                 </a>
                             </div>
                         </div>

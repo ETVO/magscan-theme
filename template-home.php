@@ -40,7 +40,7 @@ $convenios = array(
         <div class="container col-xl-8">
             <div class="d-flex cta">
                 <div class="px-2 px-sm-4 px-md-0 col col-md-8 col-lg-6 me-auto">
-                    <h2 class="title text-uppercase">Melhores profissionais de saúde</h2>
+                    <h1 class="fs-2 title text-uppercase">Melhores profissionais de saúde</h1>
 
                     <div class="my-3">
                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod.
@@ -56,7 +56,7 @@ $convenios = array(
                     <div class="col col-12 col-md-6">
                         <div class="exame">
                             <div class="heading">
-                                <span><?php echo $categoria['title']; ?></span>
+                                <h2><?php echo $categoria['title']; ?></h2>
                             </div>
 
                             <div class="links">
@@ -114,13 +114,15 @@ $convenios = array(
                         </div>
 
                         <div class="image col-12 col-md-6 order-first order-md-<?php echo ($i % 2 == 0) ? 'last' : 'first'; ?>">
-                            <?php if (has_post_thumbnail()) {
-                                the_post_thumbnail();
-                            } else {
-                            ?>
-                                <img src="<?php echo THEME_IMG_URI . 'default-exame.png' ?>" alt="<?php echo the_title(); ?>">
-                            <?php
-                            } ?>
+                            <a href="<?php the_permalink(); ?>">
+                                <?php if (has_post_thumbnail()) {
+                                    the_post_thumbnail();
+                                } else {
+                                ?>
+                                    <img src="<?php echo THEME_IMG_URI . 'default-exame.png' ?>" alt="<?php echo the_title(); ?>">
+                                <?php
+                                } ?>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -147,13 +149,13 @@ $convenios = array(
                     ?>
 
                         <div class="carousel-item <?php if ($i == 0) echo 'active' ?>">
-                            <div class="row g-3 m-0 w-100 row-cols-3">
+                            <div class="row g-3 m-0 w-100 row-cols-2 row-cols-md-3">
                                 <?php
-                                foreach ($convenios_item as $convenio) {
+                                foreach ($convenios_item as $col_i => $convenio) {
 
                                     $thumbnail = get_the_post_thumbnail($convenio);
                                 ?>
-                                    <div class="col">
+                                    <div class="col <?php if($col_i == 8) echo ' d-none d-md-block'; ?>">
                                         <?php if (has_post_thumbnail($convenio)) {
                                             echo $thumbnail;
                                         } else {
@@ -174,11 +176,11 @@ $convenios = array(
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselConvenios" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
+                    <span class="visually-hidden">Anterior</span>
                 </button>
                 <button class="carousel-control-next" type="button" data-bs-target="#carouselConvenios" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
+                    <span class="visually-hidden">Próximo</span>
                 </button>
             </div>
             <div class="action text-center pt-4 mt-2">
@@ -195,7 +197,7 @@ $convenios = array(
             </div>
             <div class="row w-100 m-0 g-5 justify-content-center">
                 <div class="col-12 col-md-6 col-lg-5">
-                    <div id="carouselUnidadeAtlantic" class="carousel slide" data-bs-ride="carousel">
+                    <div id="carouselUnidadeAtlantic" class="carousel-unidades unidade-fade-left carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="6000">
                         <div class="carousel-indicators">
                             <button type="button" data-bs-target="#carouselUnidadeAtlantic" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                             <button type="button" data-bs-target="#carouselUnidadeAtlantic" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -210,11 +212,11 @@ $convenios = array(
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselUnidadeAtlantic" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
+                            <span class="visually-hidden">Anterior</span>
                         </button>
                         <button class="carousel-control-next" type="button" data-bs-target="#carouselUnidadeAtlantic" data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
+                            <span class="visually-hidden">Próximo</span>
                         </button>
                     </div>
 
@@ -229,7 +231,7 @@ $convenios = array(
                 <div class="d-none d-lg-block col-1"></div>
                 <div class="col-12 col-md-6 col-lg-5">
 
-                    <div id="carouselUnidadeMillenium" class="carousel slide" data-bs-ride="carousel">
+                    <div id="carouselUnidadeMillenium" class="carousel-unidades carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="6000">
                         <div class="carousel-indicators">
                             <button type="button" data-bs-target="#carouselUnidadeMillenium" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                             <button type="button" data-bs-target="#carouselUnidadeMillenium" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -244,11 +246,11 @@ $convenios = array(
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselUnidadeMillenium" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
+                            <span class="visually-hidden">Anterior</span>
                         </button>
                         <button class="carousel-control-next" type="button" data-bs-target="#carouselUnidadeMillenium" data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
+                            <span class="visually-hidden">Próximo</span>
                         </button>
                     </div>
 
@@ -263,7 +265,9 @@ $convenios = array(
                 </div>
                 <div class="d-flex mt-4">
                     <div class="m-auto">
-                        <a href="" class="btn btn-info slim text-white fw-bold">Agendar Exames</a>
+                        <a href="https://magscan.centraldemarcacao.com.br/" class="btn btn-info slim text-white fw-bold">
+                            Agendar Exames
+                        </a>
                     </div>
                 </div>
             </div>

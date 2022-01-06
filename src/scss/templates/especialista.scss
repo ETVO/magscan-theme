@@ -2,15 +2,24 @@
     .image {
         img {
             border-radius: 10px;
+            width: 100%;
+            height: auto;
         }
     }
 }
 
 .template-archive-especialista {
     
+    .explain {
+        .text {
+            font-size: 1.1rem;
+        }
+    }
+
     .feed-wrap {
         position: relative;
         padding: 0 0 3rem;
+
         .underlay {
             position: absolute;
             z-index: -1;

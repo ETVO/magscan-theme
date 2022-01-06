@@ -1,4 +1,9 @@
 .template-blog {
+    .explain {
+        .text {
+            font-size: 1.1rem;
+        }
+    }
     .list {
         .card-list {
             padding: 1rem 0 1rem;
@@ -221,6 +226,37 @@
                 color: var(--bs-primary);
             }
         }
+    }
+
+    &.variation-white {
+        .page-numbers {
+            color: white;
+
+            &.current {
+                border-bottom-color: white;
+            }
+    
+            &:hover,
+            &:active,
+            &:focus {
+                color: var(--bs-secondary) !important;
+            }
+        }
+
+        .prev, .next {
+            color: white;
+            -webkit-text-stroke: 1px white;
+
+            &:hover,
+            &:active,
+            &:focus {
+                span {
+                    -webkit-text-stroke: 1px var(--bs-secondary);
+                    color: var(--bs-secondary);
+                }
+            }
+        }
+
     }
 }
 

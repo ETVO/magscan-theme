@@ -1,7 +1,7 @@
 .template-contato {
     .title-heading {
         .text {
-            font-size: 1.1rem;
+            font-size: 1.25rem;
         }
     }
     .contato {
@@ -133,15 +133,19 @@
         background-color: white;
         margin: 2rem 0 0;
         padding: 4rem 0;
-
+        
         .box {
             background-color: #e0e0e0;
             padding: 2.5rem 3rem;
+            margin: 0 auto;
             
-            margin-right: 1rem;
+            max-width: 280px;
 
+            &:first-child {
+                margin-right: 3rem;
+            }
             &:last-child {
-                margin-right: 0;
+                margin-left: 3rem;
             }
         }
     }
@@ -186,8 +190,15 @@
     
     .template-contato {
         .boxes {
+            padding: 2rem .125rem;
             .box {
-                margin-right: 0;
+                margin: 1.5rem auto !important;
+                padding: 1.5rem 1rem;
+                // display: flex;
+
+                // .inner {
+                //     margin: auto;
+                // }
             }
         }
     }

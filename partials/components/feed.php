@@ -47,11 +47,11 @@ $no_posts_found = "Nenhum post foi encontrado...";
                             </a>
                         </div>
                         <div class="title">
-                            <h5>
+                            <h2 class="fs-5">
                                 <a class="tlink tlink-hover-primary" href="<?php echo $permalink; ?>">
                                     <?php echo $title; ?>
                                 </a>
-                            </h5>
+                            </h2>
                         </div>
                     </div>
 

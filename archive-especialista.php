@@ -22,7 +22,7 @@ if (is_tax() || is_category()) {
         <div class="row">
             <div class="col-12 col-lg-6 explain">
                 <div class="title text-uppercase text-primary">
-                    <h1 class="fs-4 fw-bold">Corpo Clínico</h1>
+                    <h1 class="fs-3 fw-bold">Corpo Clínico</h1>
                 </div>
                 <div class="text mt-4">
                     Cuidado individualizado e humanizado. Conheça os profissionais que atuam na Clínica Magscan.
@@ -103,6 +103,24 @@ if (is_tax() || is_category()) {
                         ?>
                     </div>
                 </div>
+            </div>
+
+
+            <div class="pt-3">
+                <?php
+                get_template_part("partials/components/pagination", null, ['color' => 'white']);
+                ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="cta bg-primary pt-4 pb-5">
+        <div class="container d-flex flex-column text-white">
+            <div class="m-auto">
+                <h3 class="fs-5 mb-3">Agende seus exames com os nossos especialistas</h3>
+            </div>
+            <div class="m-auto">
+                <a href="https://magscan.centraldemarcacao.com.br/" class="btn btn-info slim text-white">Agendar Consulta</a>
             </div>
         </div>
     </div>

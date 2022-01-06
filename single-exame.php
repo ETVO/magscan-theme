@@ -74,7 +74,7 @@ else {
                 <div class="d-flex">
                     <div class="exame ms-lg-auto">
                         <div class="heading">
-                            <span><?php echo $related_exames['title'] ?></span>
+                            <span class="fw-bold"><?php echo $related_exames['title'] ?></span>
                         </div>
 
                         <div class="links">

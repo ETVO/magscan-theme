@@ -12,7 +12,7 @@ get_header();
 ?>
 <div class="template-convenio">
     <div class="container">
-        <div class="row m-0 w-100">
+        <div class="row m-0 w-100 pb-4">
             <div class="col-12 col-md-6 explain">
                 <div class="title text-uppercase text-primary">
                     <h1 class="fs-4 fw-bold">Convênios</h1>
@@ -77,7 +77,7 @@ get_header();
                             </div>
                             <div class="title pt-2 text-center">
                                 <a class="tlink tlink-hover-primary" href="<?php echo $permalink; ?>">
-                                    <h6><?php echo $title; ?></h6>
+                                    <h2 class="fs-6"><?php echo $title; ?></h2>
                                 </a>
                             </div>
                         </div>
@@ -106,7 +106,7 @@ get_header();
         <div class="container ">
             <div class="d-flex mb-3">
                 <div class="m-auto text-white text-center">
-                    <h4 class="title fw-bold text-uppercase">
+                    <h3 class="title fw-bold text-uppercase">
                         Seja um Parceiro da Magscan
                     </h4>
                     <div class="text mt-3">

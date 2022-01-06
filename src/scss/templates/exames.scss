@@ -219,7 +219,7 @@
             }
         }
 
-        .template-exame {
+        .template-exame:not(.exame-b) {
             padding-bottom: 0 !important;
             margin-bottom: 0;
         }

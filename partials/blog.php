@@ -19,7 +19,7 @@ $categories = get_categories();
                 <div class="list col col-12 col-lg-4">
                     <div class="explain">
                         <div class="title text-uppercase text-primary">
-                            <h1 class="fs-5 fw-bold">Blog</h1>
+                            <h1 class="fs-3 fw-bold">Blog</h1>
                         </div>
                         <div class="text mt-2">
                             Somos especialistas na criação de conteúdos que fazem a diferença na sua saúde
@@ -53,7 +53,7 @@ $categories = get_categories();
                 <div class="exame-col col">
                     <?php
                     $args = array(
-                        'post_type' => 'exame',
+                        'post_type' => 'post',
                         'status' => 'publish',
                         'orderby' => array('menu_order' => 'ASC', 'date' => 'DESC'),
                         'posts_per_page' => 1
@@ -67,13 +67,15 @@ $categories = get_categories();
                         <div class="exame-view">
                             <div class="d-flex flex-column">
                                 <div class="image">
-                                    <?php if (has_post_thumbnail()) {
-                                        the_post_thumbnail();
-                                    } else {
-                                    ?>
-                                        <img src="<?php echo THEME_IMG_URI . 'default-exame.png' ?>" alt="<?php echo the_title(); ?>">
-                                    <?php
-                                    } ?>
+                                    <a href="<?php the_permalink(); ?>">
+                                        <?php if (has_post_thumbnail()) {
+                                            the_post_thumbnail();
+                                        } else {
+                                        ?>
+                                            <img src="<?php echo THEME_IMG_URI . 'default-exame.png' ?>" alt="<?php echo the_title(); ?>">
+                                        <?php
+                                        } ?>
+                                    </a>
                                 </div>
 
                                 <div class="content">

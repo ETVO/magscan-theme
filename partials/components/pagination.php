@@ -6,9 +6,11 @@
  * @subpackage Magscan-Theme
  */
 
+$color = (isset($args['color'])) ? $args['color'] : null;
+
 ?>
 
-<div class="pagination d-flex my-3">
+<div class="pagination d-flex my-3 variation-<?php echo $color; ?>">
     <?php 
         global $wp_query;
 

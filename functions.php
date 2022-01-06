@@ -105,9 +105,7 @@ final class Magscan_Theme
 
 		require_once($dir . 'kirki/kirki-installer-section.php');
 
-		// require_once($dir . 'customizer/customizer.php');
-
-		// require_once($dir . 'shortcodes/shortcodes.php');
+		require_once($dir . 'customizer/customizer.php');
 
 		require_once($dir . 'cpt/cpt-exame.php');
 		require_once($dir . 'cpt/cpt-especialista.php');
