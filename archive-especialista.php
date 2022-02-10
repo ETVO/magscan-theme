@@ -120,7 +120,7 @@ if (is_tax() || is_category()) {
                 <h3 class="fs-5 mb-3">Agende seus exames com os nossos especialistas</h3>
             </div>
             <div class="m-auto">
-                <a href="https://magscan.centraldemarcacao.com.br/" class="btn btn-info slim text-white">Agendar Consulta</a>
+                <a href="<?php echo get_theme_mod('magscan_consulta'); ?>" class="btn btn-info slim text-white">Agendar Consulta</a>
             </div>
         </div>
     </div>

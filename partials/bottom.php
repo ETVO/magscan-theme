@@ -19,8 +19,8 @@
             <span>© 2010-<?php echo date('Y'); ?> MAGSCAN - <small>TODOS OS DIREITOS RESERVADOS</small></span>
         </div>
         <div class="faq ms-auto">
-            <a href="#" class="tlink tlink-hover-primary">FAQ</a> -
-            <a href="#" class="tlink tlink-hover-primary">Política de Privacidade</a>
+            <a href="<?php echo esc_url(home_url('/contato')); ?>" class="tlink tlink-hover-primary">FAQ</a> -
+            <a href="<?php echo get_theme_mod('magscan_privacy_policy') ?>" class="tlink tlink-hover-primary">Política de Privacidade</a>
         </div>
     </div>
 </div>

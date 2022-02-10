@@ -16,12 +16,12 @@ $cpt_tax = 'tipo';
 $exames = array(
     array(
         'title'     => 'Exames por Imagem',
-        'posts'     => get_tax_posts_array('exame', $cpt_tax, 'exames-por-imagem'),
+        'posts'     => get_posts_by_names(['exame', 'page'], explode(',', get_theme_mod('magscan_home_exames_imagem')), 5),
         'archive'   => get_term_link('exames-por-imagem', $cpt_tax)
     ),
     array(
         'title'     => 'Exames Laboratoriais',
-        'posts'     => get_tax_posts_array('exame', $cpt_tax, 'exames-laboratoriais'),
+        'posts'     => get_posts_by_names(['exame', 'page'], explode(',', get_theme_mod('magscan_home_exames_laboratoriais')), 5),
         'archive'   => get_term_link('exames-laboratoriais', $cpt_tax)
     )
 );
@@ -79,42 +79,50 @@ $exames2 = $exames[1];
                     <div class="show-exame d-flex flex-column">
                         <?php
 
-                        $exame = $exames1['posts'][0];
-                        global $post;
-                        $post = get_post($exame->ID, OBJECT);
-                        setup_postdata($post);
+                        $highlight_exame = explode(',', get_theme_mod('magscan_highlight_exame'));
+
+                        $args = array(
+                            'post_type'         => ['page', 'exame'],
+                            'status'            => 'publish',
+                            'orderby'           => array('menu_order' => 'ASC', 'date' => 'DESC'),
+                            'posts_per_page'    => 1,
+                            'post_name__in'     => $highlight_exame,
+                        );
+                        $query = new WP_Query($args);
+                        if (!empty($highlight_exame) && $query->have_posts()) {
+                            $query->the_post();
 
                         ?>
-                        <div class="inner ms-auto">
-                            <div class="image">
-                                <a href="<?php the_permalink(); ?>">
-                                    <?php if (has_post_thumbnail()) {
-                                        the_post_thumbnail();
-                                    } else {
-                                    ?>
-                                        <img src="<?php echo THEME_IMG_URI . 'default-exame.png' ?>" alt="<?php echo the_title(); ?>">
-                                    <?php
-                                    } ?>
-                                </a>
-                            </div>
-                            <div class="content">
-                                <div class="title">
-                                    <h4 class="mb-0 fs-3"><?php the_title(); ?></h4>
+                            <div class="inner ms-auto">
+                                <div class="image">
+                                    <a href="<?php the_permalink(); ?>">
+                                        <?php if (has_post_thumbnail()) {
+                                            the_post_thumbnail();
+                                        } else {
+                                        ?>
+                                            <img src="<?php echo THEME_IMG_URI . 'default-exame.png' ?>" alt="<?php echo the_title(); ?>">
+                                        <?php
+                                        } ?>
+                                    </a>
                                 </div>
+                                <div class="content">
+                                    <div class="title">
+                                        <h4 class="mb-0 fs-3"><?php the_title(); ?></h4>
+                                    </div>
 
-                                <div class="mb-3 mt-2">
-                                    <?php the_excerpt(); ?>
-                                </div>
+                                    <div class="mb-3 mt-2">
+                                        <?php the_excerpt(); ?>
+                                    </div>
 
-                                <div class="action">
-                                    <a href="<?php the_permalink(); ?>" class="btn btn-info slim text-white">Saber mais</a>
+                                    <div class="action">
+                                        <a href="<?php the_permalink(); ?>" class="btn btn-info slim text-white">Saber mais</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
                         <?php
 
-                        wp_reset_postdata();
+                        }
                         ?>
 
                         <div class="under"></div>
@@ -126,49 +134,64 @@ $exames2 = $exames[1];
     </div>
 
     <?php
-    $exames_show = array($exames2['posts'][1], $exames1['posts'][0]);
-    foreach ($exames_show as $i => $exame) {
-        global $post;
-        $post = get_post($exame->ID, OBJECT);
-        setup_postdata($post);
+
+    $chosen_exames = explode(',', get_theme_mod('magscan_chosen_exames'));
+    $chosen_exames = array_map(function ($value) {
+        return trim($value);
+    }, $chosen_exames);
+
+    $args = array(
+        'post_type'         => ['page', 'exame'],
+        'status'            => 'publish',
+        'orderby'           => array('menu_order' => 'ASC', 'date' => 'DESC'),
+        'posts_per_page'    => 3,
+        'post_name__in'     => $chosen_exames,
+    );
+    $query = new WP_Query($args);
+    if ($query->have_posts()) {
+        $i = -1;
+        while ($query->have_posts()) {
+            $query->the_post();
+            $i++;
     ?>
-        <div class="template-exame exame-<?php echo ($i % 2 != 0) ? 'a' : 'b'; ?>">
-            <div class="container">
-                <div class="row g-4">
-                    <div class="content col-12 col-md-6 d-flex">
-                        <div class="my-auto">
-                            <div class="title">
-                                <h4><?php the_title(); ?></h4>
-                            </div>
+            <div class="template-exame exame-<?php echo ($i % 2 != 0) ? 'a' : 'b'; ?>">
+                <div class="container">
+                    <div class="row g-4">
+                        <div class="content col-12 col-md-6 d-flex">
+                            <div class="my-auto">
+                                <div class="title">
+                                    <h4><?php the_title(); ?></h4>
+                                </div>
 
-                            <div class="my-3">
-                                <?php the_excerpt(); ?>
-                            </div>
+                                <div class="my-3">
+                                    <?php the_excerpt(); ?>
+                                </div>
 
-                            <div class="action">
-                                <a href="<?php the_permalink(); ?>" class="btn btn-info slim text-white">Saber mais</a>
+                                <div class="action">
+                                    <a href="<?php the_permalink(); ?>" class="btn btn-info slim text-white">Saber mais</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="image col-12 col-md-6 order-first order-md-<?php echo ($i % 2 != 0) ? 'last' : 'first'; ?>">
-                        <a href="<?php the_permalink(); ?>">
-                            <?php if (has_post_thumbnail()) {
-                                the_post_thumbnail();
-                            } else {
-                            ?>
-                                <img src="<?php echo THEME_IMG_URI . 'default-exame.png' ?>" alt="<?php echo the_title(); ?>">
-                            <?php
-                            } ?>
-                        </a>
+                        <div class="image col-12 col-md-6 order-first order-md-<?php echo ($i % 2 != 0) ? 'last' : 'first'; ?>">
+                            <a href="<?php the_permalink(); ?>">
+                                <?php if (has_post_thumbnail()) {
+                                    the_post_thumbnail();
+                                } else {
+                                ?>
+                                    <img src="<?php echo THEME_IMG_URI . 'default-exame.png' ?>" alt="<?php echo the_title(); ?>">
+                                <?php
+                                } ?>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="underlay">
+                <div class="underlay">
 
+                </div>
             </div>
-        </div>
     <?php
-        wp_reset_postdata();
+            wp_reset_postdata();
+        }
     }
     ?>
 
@@ -199,13 +222,13 @@ $exames2 = $exames[1];
                         <div class="action-row row w-100 m-0 d-flex">
                             <span class="col col-lg-7 p-0 text m-auto ms-0">Acesse o resultado do seu exame</span>
                             <span class="col col-lg-5 p-0 action m-auto me-0 d-flex">
-                                <a href="https://www.medcloud.co/?page=magscan" class="btn btn-primary ms-auto">Ver resultados</a>
+                                <a href="<?php echo get_theme_mod('magscan_resultados'); ?>" class="btn btn-primary ms-auto">Ver resultados</a>
                             </span>
                         </div>
                         <div class="action-row row w-100 m-0 d-flex">
                             <span class="col col-lg-7 p-0 text m-auto ms-0">Agende seu exame aqui</span>
                             <span class="col col-lg-5 p-0 action m-auto me-0 d-flex">
-                                <a href="https://magscan.centraldemarcacao.com.br/" class="btn btn-primary ms-auto">Agendar exame</a>
+                                <a href="<?php echo get_theme_mod('magscan_consulta'); ?>" class="btn btn-primary ms-auto">Agendar exame</a>
                             </span>
                         </div>
                     </div>
@@ -226,14 +249,13 @@ $exames2 = $exames[1];
                     ?>
 
                         <div class="carousel-item <?php if ($i == 0) echo 'active' ?>">
-                            <div class="row g-3 m-0 w-100 row-cols-3">
+                            <div class="row g-3 m-0 w-100 row-cols-2 row-cols-md-3">
                                 <?php
-                                foreach ($convenios_item as $convenio) {
+                                foreach ($convenios_item as $col_i => $convenio) {
 
                                     $thumbnail = get_the_post_thumbnail($convenio);
-                                    $permalink = get_the_permalink($convenio);
                                 ?>
-                                    <div class="col">
+                                    <div class="col <?php if($col_i == 8) echo ' d-none d-md-flex'; ?>">
                                         <?php if (has_post_thumbnail($convenio)) {
                                             echo $thumbnail;
                                         } else {
@@ -254,11 +276,11 @@ $exames2 = $exames[1];
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselConvenios" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
+                    <span class="visually-hidden">Anterior</span>
                 </button>
                 <button class="carousel-control-next" type="button" data-bs-target="#carouselConvenios" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
+                    <span class="visually-hidden">Próximo</span>
                 </button>
             </div>
             <div class="action text-center pt-4 mt-2">

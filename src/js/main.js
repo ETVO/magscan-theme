@@ -7,6 +7,14 @@ import 'bootstrap';
 (jQuery)(
     function ($) {
 
+        /**
+         * Invoke functions when document.body is ready 
+         */
+        $(document.body).ready(function () {
+            showCookiePopup();
+            setupFixedHeader();
+        });
+
         function showCookiePopup() {
 
             let consent = localStorage.getItem('cookiesConsent');
@@ -39,11 +47,19 @@ import 'bootstrap';
             }
         }
 
-        /**
-         * Invoke functions when document.body is ready 
-         */
-        $(document.body).ready(function () {
-            showCookiePopup();
-        });
+        function setupFixedHeader() {
+            let headerTop = $('#top').outerHeight();
+            console.log(headerTop);
+
+            $('body.admin-bar header').css('top', $('#wpadminbar').outerHeight())
+            
+            $(window).on('scroll load', () => {
+                if(window.scrollY >= headerTop) {
+                    $('#header').addClass('fixed');
+                } else {
+                    $('#header').removeClass('fixed');
+                }
+            });
+        }
     }
 )

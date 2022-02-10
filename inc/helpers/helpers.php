@@ -52,6 +52,25 @@ if (!function_exists('get_tax_posts_array')) {
     }
 }
 
+
+
+if (!function_exists('get_posts_by_names')) {
+    function get_posts_by_names($post_type, $names, $i = -1)
+    {
+        $args = array(
+            'post_type' => $post_type,
+            'status'            => 'publish',
+            'posts_per_page' => $i,
+            'orderby'   => 'post_name__in',
+            'post_name__in'     => $names
+        );
+        $query = new WP_Query($args);
+        if ($query->have_posts()) {
+            return $query->posts;
+        }
+    }
+}
+
 if (!function_exists('get_posts_array')) {
     function get_posts_array($post_type, $i = -1, $offset = 0)
     {

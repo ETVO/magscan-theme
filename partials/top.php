@@ -8,24 +8,24 @@
  */
 ?>
 
-<div class="top d-none d-md-flex">
+<div class="top d-none d-md-flex" id="top">
     <div class="container d-flex flex-column flex-md-row">
         <div class="social-icons mx-auto ms-md-0 me-md-auto mb-md-0">
-            <a class="social-icon btn btn-outline-primary" href="https://web.facebook.com/ClinicaMagscan/">
+            <a class="social-icon btn btn-outline-primary" target="_blank" href="<?php echo get_theme_mod('magscan_facebook'); ?>">
                 <span class="bi-facebook"></span>
             </a>
-            <a class="social-icon btn btn-outline-primary" href="https://www.instagram.com/clinicamagscan/">
+            <a class="social-icon btn btn-outline-primary" target="_blank" href="<?php echo get_theme_mod('magscan_instagram'); ?>">
                 <span class="bi-instagram"></span>
             </a>
-            <a class="social-icon btn btn-outline-primary" href="https://www.youtube.com/channel/UC24ZqHtdRGmUgy3BbEHu-dA">
+            <a class="social-icon btn btn-outline-primary" target="_blank" href="<?php echo get_theme_mod('magscan_youtube'); ?>">
                 <span class="bi-youtube"></span>
             </a>
         </div>
         <div class="actions ms-auto">
-            <a class="btn btn-primary" href="https://magscan.centraldemarcacao.com.br/">
+            <a class="btn btn-primary" target="_blank" href="<?php echo get_theme_mod('magscan_consulta'); ?>">
                 Agendar Consulta
             </a>
-            <a class="btn btn-primary" href="https://www.medcloud.co/?page=magscan">
+            <a class="btn btn-primary" target="_blank" href="<?php echo get_theme_mod('magscan_resultados'); ?>">
                 Resultados
                 <br class="d-md-none"><span class="d-none d-md-inline"></span>de exames
             </a>

@@ -243,7 +243,7 @@
     }
 }
 
-.single-exame {
+.template-single-exame {
     padding: 0 0 4rem;
 
     .container > .row > .col {
@@ -310,7 +310,7 @@
 }
 
 @media all and (max-width: 960px) {
-    .single-exame {
+    template-single-exame {
         .container > .row > .col {
             padding-left: 0;
             padding-right: 0;

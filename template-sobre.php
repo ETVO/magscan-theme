@@ -11,6 +11,21 @@ get_header();
 
 the_post();
 
+$unidades = array(
+    'atlantic' => array(
+        'name' => get_theme_mod('atlantic_name'),
+        'phone' => get_theme_mod('atlantic_phone'),
+        'address' => get_theme_mod('atlantic_address'),
+        'images' => get_theme_mod('atlantic_images'),
+    ),
+    'millenium' => array(
+        'name' => get_theme_mod('millenium_name'),
+        'phone' => get_theme_mod('millenium_phone'),
+        'address' => get_theme_mod('millenium_address'),
+        'images' => get_theme_mod('millenium_images'),
+    ),
+);
+
 ?>
 
 <div class="template-sobre">
@@ -103,7 +118,7 @@ the_post();
                                 <h5><span class="fw-normal">Acesse o nosso teste</span><br>“Quais exames você precisa fazer anualmente?”</h4>
                             </div>
                             <div class="text">
-                                <a href="" class="btn btn-info text-white text-uppercase fw-bold">
+                                <a href="<?php echo get_theme_mod('magscan_test_link') ?>" class="btn btn-info text-white text-uppercase fw-bold">
                                     Quero fazer o teste
                                 </a>
                             </div>
@@ -183,77 +198,54 @@ the_post();
             <div class="title text-uppercase m-auto">
                 <h3 class="mb-0">Unidades</h3>
             </div>
-            <div class="row w-100 m-0 g-5 justify-content-center">
-                <div class="col-12 col-md-6 col-lg-5">
-                    <div id="carouselUnidadeAtlantic" class="carousel-unidades unidade-fade-left carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="6000">
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselUnidadeAtlantic" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselUnidadeAtlantic" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                        </div>
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="<?php echo THEME_IMG_URI . 'atlantic.png'; ?>" class="d-block w-100" alt="...">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="<?php echo THEME_IMG_URI . 'millenium.png'; ?>" class="d-block w-100" alt="...">
-                            </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselUnidadeAtlantic" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Anterior</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselUnidadeAtlantic" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Próximo</span>
-                        </button>
-                    </div>
+            <div class="row w-100 m-0 gx-5 gy-3 justify-content-center">
 
-                    <div class="m-auto text-center px-2 py-3">
-                        <h5 class="mb-0 text-uppercase">Atlantic Tower</h5>
-                        <div class="mt-2">
-                            (92) 4009-6001
-                            <br />1719, Térreo, sala 2A, Manaus-AM
-                        </div>
-                    </div>
-                </div>
-                <div class="d-none d-lg-block col-1"></div>
-                <div class="col-12 col-md-6 col-lg-5">
-
-                    <div id="carouselUnidadeMillenium" class="carousel-unidades carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="6000">
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselUnidadeMillenium" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselUnidadeMillenium" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                        </div>
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="<?php echo THEME_IMG_URI . 'millenium.png'; ?>" class="d-block w-100" alt="...">
+            <?php $i = 0;
+                foreach ($unidades as $key => $unidade) :
+                    $id = 'carousel' . $key;
+                ?>
+                    <div class="col-12 col-md-6 col-lg-5">
+                        <div id="<?php echo $id; ?>" class="carousel-unidades <?php if ($i % 2 == 0) echo 'unidade-fade-left'; ?> carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="6000">
+                            <div class="carousel-indicators">
+                                <?php foreach ($unidade['images'] as $j => $image) : ?>
+                                    <button type="button" data-bs-target="#<?php echo $id; ?>" data-bs-slide-to="<?php echo $j; ?>" class="active" aria-current="true" aria-label="Slide <?php echo $j + 1; ?>"></button>
+                                <?php endforeach; ?>
                             </div>
-                            <div class="carousel-item">
-                                <img src="<?php echo THEME_IMG_URI . 'atlantic.png'; ?>" class="d-block w-100" alt="...">
+                            <div class="carousel-inner">
+
+                                <?php foreach ($unidade['images'] as $j => $image):
+                                    $url = wp_get_attachment_image_src($image['image'], 'large')[0];
+                                ?>
+
+                                    <div class="carousel-item <?php if ($j == 0) echo 'active'; ?>">
+                                        <img src="<?php echo $url; ?>" class="d-block w-100">
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#<?php echo $id; ?>" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Anterior</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#<?php echo $id; ?>" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Próximo</span>
+                            </button>
+                        </div>
+
+
+                        <div class="m-auto text-center px-2 py-3">
+                            <h5 class="mb-0 text-uppercase"><?php echo $unidade['name']; ?></h5>
+                            <div class="mt-2">
+                                <?php echo $unidade['phone']; ?>
+                                <br /><?php echo $unidade['address']; ?>
                             </div>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselUnidadeMillenium" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Anterior</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselUnidadeMillenium" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Próximo</span>
-                        </button>
                     </div>
-
-                    <div class="m-auto text-center px-2 py-3">
-                        <h5 class="mb-0 text-uppercase">Millennium Shopping</h5>
-                        <div class="mt-2">
-                            (92) 4009-6001
-                            <br /> Av. Djalma Batista, 1661, loja 243, Manaus-AM
-                        </div>
-                    </div>
-
-                </div>
+                <?php $i++;
+                endforeach; ?>
                 <div class="d-flex mt-4">
                     <div class="m-auto">
-                        <a href="https://magscan.centraldemarcacao.com.br/" class="btn btn-info slim text-white fw-bold">Agendar Exames</a>
+                        <a href="<?php echo get_theme_mod('magscan_consulta'); ?>" class="btn btn-info slim text-white fw-bold">Agendar Exames</a>
                     </div>
                 </div>
             </div>

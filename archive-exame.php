@@ -100,7 +100,7 @@ if (is_tax() || is_category()) {
                                     <small>
                                         <a href="<?php echo $permalink; ?>" class="tlink tlink-hover-primary text-uppercase fw-light">Saiba Mais</a>
                                     </small>
-                                    <a href="https://magscan.centraldemarcacao.com.br/" class="ms-3 btn btn-primary slim fw-light rounded-pill">Agendar online</a>
+                                    <a href="<?php echo get_theme_mod('magscan_consulta'); ?>" class="ms-3 btn btn-primary slim fw-light rounded-pill">Agendar online</a>
                                 </span>
                             </div>
                         </div>

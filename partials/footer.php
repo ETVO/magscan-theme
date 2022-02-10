@@ -10,10 +10,10 @@
 
 <div class="cookies-consent" id="cookiePopup">
     <div class="title mb-1 fs-6">
-        <b><span class="bi-patch-question-fill text-primary"></span> Este site usa cookies.</b>
+        <b><span class="bi-patch-question-fill text-primary"></span></b>
     </div>
     <div class="text">
-        Ao utilizar os nossos serviços, você concorda com tal monitoramento.
+        A Magscan utiliza cookies essenciais, para o funcionamento adequado deste site, cookies de desempenho, para obter informações estatísticas e analíticas sobre seus usuários e cookies de publicidade, para desenvolver iniciativas de marketing. Caso você prefira desabilitar ou bloquear o uso de cookies, ou, ainda, obter maiores informações, acesse nossa <a href="<?php echo get_theme_mod('magscan_privacy_policy'); ?>">Política de Privacidade</a>.
     </div>
     <div class="action mt-2 d-flex">
         <button class="btn btn-primary ms-auto" id="cookieAccept" title="Aceitar utilização de cookies para monitoramento.">Aceitar</button>
@@ -31,7 +31,7 @@
                 <span class="icon bi bi-list"></span>
             </button> -->
 
-            <div class="d-flex w-100" id="mainMenuDropdown">
+            <div class="d-flex w-100">
                 <div class="actions ms-auto d-flex">
                     <a href="<?php echo esc_url(get_permalink(get_option('page_for_posts'))); ?>" class="goto-blog text-uppercase text-decoration-none">
                         <span class="icon">
@@ -45,13 +45,13 @@
                     </a>
 
                     <div class="social-icons">
-                        <a class="social-icon btn btn-outline-primary" href="https://web.facebook.com/ClinicaMagscan/">
+                        <a class="social-icon btn btn-outline-primary" href="<?php echo get_theme_mod('magscan_facebook'); ?>">
                             <span class="bi-facebook"></span>
                         </a>
-                        <a class="social-icon btn btn-outline-primary" href="https://www.instagram.com/clinicamagscan/">
+                        <a class="social-icon btn btn-outline-primary" href="<?php echo get_theme_mod('magscan_instagram'); ?>">
                             <span class="bi-instagram"></span>
                         </a>
-                        <a class="social-icon btn btn-outline-primary" href="https://www.youtube.com/channel/UC24ZqHtdRGmUgy3BbEHu-dA">
+                        <a class="social-icon btn btn-outline-primary" href="<?php echo get_theme_mod('magscan_youtube'); ?>">
                             <span class="bi-youtube"></span>
                         </a>
                     </div>
@@ -78,7 +78,7 @@
                     A Magscan trata com seriedade, confidencialidade e integridade todos os dados pessoais que se encontram sob a sua responsabilidade. Aqui cuidamos não apenas da sua saúde, mas também do sigilo das informações dos pacientes, colaboradores, médicos, prestadores de serviço e fornecedores.
                 </p>
                 <h6 class="mb-0">Requisições relacionadas à Lei Geral de Dados Pessoais (LGPD)?</h6>
-                <a href="#" class="tlink tlink-hover-decoration"><b>Entre em contato com a Magscan.</b></a>
+                <a href="<?php echo esc_url(home_url('/contato')); ?>" class="tlink tlink-hover-decoration"><b>Entre em contato com a Magscan.</b></a>
 
             </div>
         </div>

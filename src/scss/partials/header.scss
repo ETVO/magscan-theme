@@ -1,3 +1,15 @@
+
+
+@mixin fixed {
+    background-color: var(--bs-light);
+    margin-bottom: 2rem !important;   
+
+    > .container {
+        margin-top: 0;    
+        margin-bottom: 0;   
+    }
+}
+
 header {
     z-index: 1000;
     .navbar-brand {
@@ -66,21 +78,42 @@ header {
 
         .dropdown-menu {
             padding: 0 !important;
+            margin-left: -.75rem;
     
             .menu-item {
                 margin: 0;
     
                 a {
+                    font-size: .9em;
                     transition: background-color 0.2s;
-                    padding: .5rem 1rem;
+                    padding: .5rem .75rem;
                 }
             }
         }
+    }
+
+    position: sticky !important;
+    top: 0;
+
+    background-color: transparent;
+    transition: background-color .2s, margin .2s; 
+    
+    > .container {
+        margin-top: 1rem;    
+        margin-bottom: 1rem;   
+        transition: margin .2s; 
+    }
+    
+    &.fixed {
+        @include fixed;
     }
 }
 
 @media all and (max-width: 768px) {
     header {
+        
+        @include fixed;
+        
         .navbar-brand {
             img {
                 width: 200px;

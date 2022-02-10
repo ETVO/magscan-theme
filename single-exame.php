@@ -33,7 +33,7 @@ else {
 
 
 ?>
-<div class="single-exame">
+<div class="template-single-exame">
     <div class="container px-lg-0">
         <div class="row m-0 w-100">
             <div class="col col-12 col-lg-6">
@@ -44,7 +44,7 @@ else {
                     <?php the_content(); ?>
                 </div>
                 <div class="action">
-                    <a href="#" class="btn btn-primary">Agendar Consulta</a>
+                    <a href="<?php echo get_theme_mod('magscan_consulta'); ?>" class="btn btn-primary">Agendar Consulta</a>
                 </div>
             </div>
             <div class="col col-12 col-lg-6">

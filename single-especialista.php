@@ -22,10 +22,16 @@ $especialidade = get_field('especialidade');
         <div class="row m-0 w-100 mt-4 pt-2">
             <div class="col">
                 <div class="image">
-                    <?php the_post_thumbnail(); ?>
+                    <?php if (has_post_thumbnail($convenio)) {
+                        the_post_thumbnail();
+                    } else {
+                    ?>
+                        <img src="<?php echo THEME_IMG_URI . 'default-especialista.png' ?>" alt="<?php the_title(); ?>">
+                    <?php
+                    } ?>
                 </div>
                 <div class="action d-grid mt-3">
-                    <a href="" class="btn btn-primary fw-bold">
+                    <a href="<?php echo get_theme_mod('magscan_consulta'); ?>" class="btn btn-primary fw-bold">
                         <small>Agendar Consulta</small>
                     </a>
                 </div>

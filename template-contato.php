@@ -11,6 +11,21 @@ get_header();
 
 the_post();
 
+$unidades = array(
+    'atlantic' => array(
+        'name' => get_theme_mod('atlantic_name'),
+        'phone' => get_theme_mod('atlantic_phone'),
+        'address' => get_theme_mod('atlantic_address'),
+        'images' => get_theme_mod('atlantic_images'),
+    ),
+    'millenium' => array(
+        'name' => get_theme_mod('millenium_name'),
+        'phone' => get_theme_mod('millenium_phone'),
+        'address' => get_theme_mod('millenium_address'),
+        'images' => get_theme_mod('millenium_images'),
+    ),
+);
+
 ?>
 
 <div class="template-contato">
@@ -75,38 +90,26 @@ the_post();
             <div class="title text-center">
                 <h3 class="fw-bold text-dark">UNIDADES</h3>
             </div>
-            <div class="unidade row">
-                <div class="image col-lg-4 my-auto">
-                    <img src="<?php echo THEME_IMG_URI . 'millenium.png'; ?>" class="d-block w-100" alt="">
-                </div>
-                <div class="content col-lg-5 my-auto">
-                    <h4>MILLENIUM SHOPPING</h4>
-                    <div class="mt-3">
-                        (92) 4009-6001
-                        <br>1719, Térreo, sala 2A, Manaus-AM
+            <?php foreach($unidades as $key => $unidade): 
+                $url = wp_get_attachment_image_src($unidade['images'][0]['image'], 'large')[0];
+            ?>
+                <div class="unidade row">
+                    <div class="image col-lg-4 my-auto">
+                        <img src="<?php echo $url; ?>" class="d-block w-100" alt="">
+                    </div>
+                    <div class="content col-lg-5 my-auto">
+                        <h4><?php echo $unidade['name']; ?></h4>
+                        <div class="mt-3">
+                            <?php echo $unidade['phone']; ?>
+                            <br><?php echo $unidade['address']; ?>
+                        </div>
+                    </div>
+                    <div class="map col-lg-3 my-auto">
+                        <iframe frameborder="0" scrolling="yes" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=<?php echo htmlspecialchars(strip_tags($unidade['address'])); ?>&t=m&mrt=yp&z=15&output=embed&iwloc=addr&msa=0">
+                        </iframe>
                     </div>
                 </div>
-                <div class="map col-lg-3 my-auto">
-                    <iframe frameborder="0" scrolling="yes" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=Rua 1719, Térreo, sala 2A, Manaus-AM&t=m&mrt=yp&z=15&output=embed&iwloc=addr&msa=0">
-                    </iframe>
-                </div>
-            </div>
-            <div class="unidade row">
-                <div class="image col-12 col-lg-4 my-auto">
-                    <img src="<?php echo THEME_IMG_URI . 'atlantic.png'; ?>" class="d-block w-100" alt="">
-                </div>
-                <div class="content col-lg-5 my-auto">
-                    <h4>ATLANTIC TOWER</h4>
-                    <div class="mt-3">
-                        (92) 4009-6001
-                        <br>Av. Djalma Batista, 1661, loja 243, Manaus-AM
-                    </div>
-                </div>
-                <div class="map col-lg-3 my-auto">
-                    <iframe frameborder="0" scrolling="yes" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=Av. Djalma Batista, 1661, loja 243, Manaus-AM&t=m&mrt=yp&z=15&output=embed&iwloc=addr&msa=0">
-                    </iframe>
-                </div>
-            </div>
+            <?php endforeach; ?>
         </div>
     </div>
 

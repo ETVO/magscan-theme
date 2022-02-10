@@ -37,9 +37,15 @@
             .dropdown-menu {
                 top: 0.25rem !important;
                 right: 0 !important;
+                inset: 0.25rem 0 auto 0 !important;
                 transform: translate(0, 32px) !important;
                 z-index: 2000;
                 box-shadow: 0 10px 15px rgba(#000, .1);
+                background-color: transparent;
+
+                input {
+                    background-color: white;
+                }
             }
         }
     }
